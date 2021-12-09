@@ -1,5 +1,5 @@
 {
-    "name": "my-pantry",
+    "name": "my-pantry-log",
     "description": "Build scripts for Heroku",
     "engines": {
         "node": ">= 14"
