@@ -1,3 +1,3 @@
 class UserFoodSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :, :food_id, :user_price, :user_days_until_expiration, :quantity
 end
