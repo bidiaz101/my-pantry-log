@@ -1,3 +1,5 @@
+My Pantry Log - Preventing Food Waste
+
 According to the U.S. Deparment of Agriculture an estimated 30-40 percent of the
 entire US food supply is wasted. My Pantry Log is intended to reduce that figure.
 
