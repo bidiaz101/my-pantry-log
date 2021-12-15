@@ -102,6 +102,14 @@ Food.create(
         description: scrape_table("http://www.eatbydate.com/fruits/fresh/how-long-do-avocados-last-shelf-life-expiration-date/")
     },
     {
+        name: 'Apple',
+        days_until_expiration: 7,
+        type: 'Fruit',
+        signs_of_spoilage: ['Grainy, soft interior', 'Wrinkled skin', 'Discoloration', 'Mold'],
+        price: 0.82,
+        description: scrape_table("https://www.eatbydate.com/fruits/fresh/apples-shelf-life-expiration-date/")
+    },
+    {
         name: 'Banana',
         days_until_expiration: 7,
         type: 'Fruit',
@@ -180,6 +188,14 @@ Food.create(
         signs_of_spoilage: ['Rancid odor', 'Wine-like odor'],
         price: 10.78,
         description: scrape_table("http://www.eatbydate.com/other/condiments/how-long-does-oil-last/")
+    },
+    {
+        name: "Spaghetti Sauce",
+        days_until_expiration: 7,
+        type: "Other",
+        signs_of_spoilage: ['Mold'],
+        price: 2.04
+        description: scrape_table("https://www.eatbydate.com/vegetables/fresh-vegetables/spaghetti-sauce-shelf-life-expiration-date/")
     },
     {
         name: "Honey",
@@ -296,6 +312,15 @@ Food.create(
     },
     {
         
+        name: "Celery",
+        days_until_expiration: 28,
+        type: "Vegetable",
+        signs_of_spoilage: ['Mushy, slimy texture'],
+        price: 2.04,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/how-long-does-celery-last-shelf-life/")
+    },
+    {
+        
         name: "Carrots",
         days_until_expiration: 28,
         type: "Vegetable",
@@ -303,7 +328,47 @@ Food.create(
         price: 2.04,
         description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/how-long-do-carrots-last-shelf-life/")
     },
-    
+    {
+        
+        name: "Lettuce",
+        days_until_expiration: 7,
+        type: "Vegetable",
+        signs_of_spoilage: ['Mushy, slimy texture', 'Discoloration', 'Rotten smell'],
+        price: 2.97,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/how-long-does-lettuce-last/")
+    },
+    {
+        name: "Potatoes",
+        days_until_expiration: 28,
+        type: "Vegetable",
+        signs_of_spoilage: ['Soft texture', 'Withered appearance', "Sour Odor", 'Mold'],
+        price: 4.10,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/potatoes-shelf-life-expiration-date/")
+    },
+    {
+        name: "Cucumbers",
+        days_until_expiration: 7,
+        type: "Vegetable",
+        signs_of_spoilage: ['Slimy surface', "Mushy texture"],
+        price: 2.55,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/how-long-do-cucumbers-last-shelf-life-expiration-date/")
+    },
+    {
+        name: "Onions",
+        days_until_expiration: 28,
+        type: "Vegetable",
+        signs_of_spoilage: ['Black spots', 'Soft spots', 'Mold'],
+        price: 2.55,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/how-long-do-onions-last-shelf-life/")
+    },
+    {
+        name: "Mushrooms",
+        days_until_expiration: 7,
+        type: "Vegetable",
+        signs_of_spoilage: ['Sticky, slimy surface', 'Darker color change', 'Mushy texture'],
+        price: 6.66,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/mushrooms/")
+    },
   ]
 )
 
