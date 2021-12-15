@@ -1,14 +1,15 @@
+require 'open-uri'
+require 'nokogiri'
+
 puts "Seeding DB..."
-# {
-    # name: 
-    # days_until_expiration:
-    # type:
-    # signs_of_spoilage:
-    # price:
-    # description: 
-# }
 
 # Make column in users of last time they logged in
+
+def scrape_table(url)
+  html = URI.open(url)
+  doc = Nokogiri::HTML(html)
+  doc.css('#unopened')
+end
 
 Food.create(
   [
@@ -18,7 +19,7 @@ Food.create(
         type: 'Dairy',
         signs_of_spoilage: ['Damp odor', 'Yellow color', 'Sour taste', 'Pockets of water'],
         price: 2.75,
-        description: "Cottage cheese should be refrigerated. It can be frozen to be kept for longer, but this will result in a separated, less flavorful product."
+        description: scrape_table("http://www.eatbydate.com/dairy/cheese/cottage-cheese-shelf-life-expiration-date/")
     },
     {
         name: 'Cheese',
@@ -26,7 +27,7 @@ Food.create(
         type: 'Dairy',
         signs_of_spoilage: ['Mold', 'Darker color', 'Harder texture', 'Stronger smell'],
         price: 2.86,
-        description: 'There can be a great deal of variation in how long cheese is stored. Hard cheeses, like parmesan, romano, or asiago, store for longer than soft cheeses, like brie. 2 weeks is usually how long sliced semi-hard cheese stores for in the refrigerator. Hard cheeses and semi-hard cheeses store for about 3-4 weeks if stored as a block. If the cheese is still sealed, cheese blocks can store for about 1-4 months depending on how hard the cheese is. Adjust expiration date accordingly.'
+        description: scrape_table("http://www.eatbydate.com/dairy/cheese/cheese-shelf-life-expiration-date/")
     },
     {
         name: 'Sour Cream',
@@ -34,7 +35,7 @@ Food.create(
         type: 'Dairy',
         signs_of_spoilage: ['Dark mold', 'Pockets of liquid', 'Bitter flavor'],
         price: 1.03,
-        description: 'Sour cream should be refrigerated. Frozen sour cream will result in lumpy texture and a loss of flavor once thawed.'
+        description: scrape_table("http://www.eatbydate.com/dairy/sour-cream-shelf-life-expiration-date/")
     },
     {
         name: 'Cream Cheese',
@@ -42,7 +43,7 @@ Food.create(
         type: 'Dairy',
         signs_of_spoilage: ['Sour taste', 'Sour smell', 'Cracked, lumpy texture'],
         price: 1.71,
-        description: 'Most cream cheese is sold in a foil that cannot be resealed. To help it keep for longer it is recommended that it is placed in an airtight container or resealable bag. Freexing cream cheese is not recommended as it will result in a crumbly cheese. One week is the fastest cream cheese will spoil past the "best by" date, but can last as long as 3-4 weeks.'
+        description: scrape_table("http://www.eatbydate.com/dairy/cheese/cream-cheese-shelf-life-expiration-date/")
     },
     {
         name: 'Eggs',
@@ -50,7 +51,7 @@ Food.create(
         type: 'Protein',
         signs_of_spoilage: ['Cloudy or oddly colored "whites"', 'Rotten smell'],
         price: 4.43,
-        description: 'Samonella and E.coli pose health risks when eating undercooked or spoiled eggs. Partially cooked eggs are safer to eat when they have been pasteurized.'
+        description: scrape_table("http://www.eatbydate.com/eggs-shelf-life-expiration-date/")
     },
     {
         name: 'Milk',
@@ -58,7 +59,7 @@ Food.create(
         type: 'Dairy',
         signs_of_spoilage: ['Discoloration', 'Lumpy', 'Sour odor'],
         price: 5.85,
-        description: 'The "eat by" date printed on milk is fairly reliable.' 
+        description: scrape_table("http://www.eatbydate.com/dairy/milk/milk-shelf-life-expiration-date/")
     },
     {
         name: "Butter", 
@@ -66,7 +67,7 @@ Food.create(
         type: "Dairy",
         signs_of_spoilage: ['Pale color', 'Mold', 'Change in texture' 'Stale, cheesy, or decomposing smell'],
         price: 4.10,
-        description: 'Unopened butter can keep for about one month past the expiration date. Opened it can last for two weeks.'
+        description: scrape_table("http://www.eatbydate.com/dairy/spreads/butter-shelf-life-expiration-date/")
     },
     {
         name: 'Yogurt',
@@ -74,7 +75,7 @@ Food.create(
         type: "Dairy",
         signs_of_spoilage: ['Lumpy texture', 'Mold'],
         price: 4.31,
-        description: 'Frozen yogurt can last 2-3 months past the expiration date. Drinkable refrigerated yogurt lasts for 7-10 days past the date. Refrigerated greek yogurt last for 1-2 weeks past the date. Opened yogurt should be eaten within a week.'
+        description: scrape_table("http://www.eatbydate.com/dairy/yogurt-shelf-life-expiration-date/")
     },
     {
         name: 'Fruit Juice',
@@ -82,15 +83,15 @@ Food.create(
         type: 'Beverage',
         signs_of_spoilage: ['Discoloration', 'Sour smell', 'Mold'],
         price: 4.82,
-        description: 'The time it takes for fruit juice to spoil can vary wildly depending on if it is canned concentrate, if it is fresh squeezed, or bottled from a large manufacturer. Fresh juices should be consumed within a week. Many bottled juices can last in the refrigerator for 1-3 months, with orange juice as the exception. It can last for 2-3 weeks in the refrigerator. Frozen fruit juice concentrate can last for 6-9 months. Juice should be consumed within two weeks once opened.'
+        description: scrape_table("http://www.eatbydate.com/drinks/fruit-juice-shelf-life-expiration-date/")
     },
     {
         name: 'Egg Nog',
         days_until_expiration: 5,
-        type: "Beverage",
+        type: "Dairy",
         signs_of_spoilage: ['Discoloration', "Lumpy texture", "Sour smell"],
         price: 4.41,
-        description: "Canned eggnog can last 4-5 months in the refrigerator. Once opened, eggnog lasts for about 5 days."
+        description: scrape_table("http://www.eatbydate.com/dairy/milk/how-long-does-egg-nog-last-shelf-life-expiration-date/")
     },
     {
         name: "Avocado",
@@ -98,73 +99,211 @@ Food.create(
         type: "Fruit",
         signs_of_spoilage: ['Black flesh', 'Excessivly soft'],
         price: 1.82,
-        description: 'Avocados become ripe when the fruit gives slightly when pressed. Once ripe, can last for about 3-4 days at room temperature and about 7-10 days in the refrigerator.'
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/how-long-do-avocados-last-shelf-life-expiration-date/")
     },
     {
-        name: 'Banana'
-        days_until_expiration:
-        type: 'Fruit'
-        signs_of_spoilage:
-        price:
-        description: 
+        name: 'Banana',
+        days_until_expiration: 7,
+        type: 'Fruit',
+        signs_of_spoilage: ['Turning black', 'Leaking liquid', 'Mold'],
+        price: 0.82,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/bananas-shelf-life-expiration-date/")
+    },
+    {
+        name: "Blueberries",
+        days_until_expiration: 5,
+        type: 'Fruit',
+        signs_of_spoilage: ['Mushy texture', 'Discoloration', 'Bruising', 'Mold'],
+        price: 4.92,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/blueberries/")
+    },
+    {
+        name: "Grapes",
+        days_until_expiration: 5,
+        type: "Fruit",
+        signs_of_spoilage: ['Soft texture', 'Discoloration', 'Vinegar-like odor', 'Mold'],
+        price: 7.06,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/grapes/")
+    },
+    {
+        name: "Lemons",
+        days_until_expiration: 14,
+        type: "Fruit",
+        signs_of_spoilage: ['Soft texture', 'Discoloration', 'Soft spots', 'Mold'],
+        price: 3.38,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/how-long-do-lemons-last/")
+    },
+    {
+        name: "Oranges",
+        days_until_expiration: 14,
+        type: "Fruit",
+        signs_of_spoilage: ['Soft texture', 'Discoloration', 'Soft spots', 'Mold'],
+        price: 0.99,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/how-long-do-oranges-last-shelf-life-expiration-date/")
+    },
+    {
+        name: "Tomatoes",
+        days_until_expiration: 14,
+        type: "Fruit",
+        signs_of_spoilage: ['Soft texture', 'Discoloration', 'Soft spots', 'Mold'],
+        price: 0.98,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/tomatoes-shelf-life-expiration-date/")
+    },
+    {
+        name: "Strawberries",
+        days_until_expiration: 14,
+        type: "Fruit",
+        signs_of_spoilage: ['Soft texture', 'Discoloration', 'Soft spots', 'Mold'],
+        price: 6.21,
+        description: scrape_table("http://www.eatbydate.com/fruits/fresh/how-long-do-strawberries-last/")
+    },
+    {
+        name: "Bread",
+        days_until_expiration: 14,
+        type: "Grains",
+        signs_of_spoilage: ['Foul odor', 'Mold'],
+        price: 2.14,
+        description: scrape_table("http://www.eatbydate.com/grains/baked-goods/bread-shelf-life-expiration-date/")
+    },
+    {
+        name: "Tortillas",
+        days_until_expiration: 7,
+        type: "Grains",
+        signs_of_spoilage: ['Stiffening', 'Mold'],
+        price: 2.14,
+        description: scrape_table("http://www.eatbydate.com/grains/baked-goods/how-long-do-tortillas-last-shelf-life-expiration-date/")
+    },
+    {
+        name: "Oil",
+        days_until_expiration: 7,
+        type: "Other",
+        signs_of_spoilage: ['Rancid odor', 'Wine-like odor'],
+        price: 10.78,
+        description: scrape_table("http://www.eatbydate.com/other/condiments/how-long-does-oil-last/")
+    },
+    {
+        name: "Honey",
+        days_until_expiration: 10000,
+        type: "Other",
+        signs_of_spoilage: [],
+        price: 7.91,
+        description: "<p>Honey can last for forever. To liquify crystallized honey the container can be placed in hot water or microwaved if the container is microwave safe.</p>"
+    },
+    {
+        name: "Jam",
+        days_until_expiration: 365,
+        type: "Other",
+        signs_of_spoilage: ['Liquid forming', "change in texture and color", "Unusual odor", "Mold"],
+        price: 3.14,
+        description: scrape_table("http://www.eatbydate.com/other/condiments/how-long-does-jam-last-shelf-life-expiration-date/")
+    },
+    {
+        name: "Beef",
+        days_until_expiration: 2,
+        type: "Protein",
+        signs_of_spoilage: ['Dull, slimy flesh', 'Sour odor', 'brown or gray color'],
+        price: 22.09,
+        description: scrape_table("http://www.eatbydate.com/proteins/meats/beef-shelf-life-expiration-date/")
+    },
+    {
+        
+        name: "Bacon",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Dull, slimy flesh', 'Sour odor', 'brown or gray color'],
+        price: 5.14,
+        description: scrape_table("http://www.eatbydate.com/proteins/meats/bacon-shelf-life-expiration-date/")
+    },
+    {
+        
+        name: "Ham",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Dull, slimy flesh', 'Sour odor', 'brown or gray color'],
+        price: 21.96,
+        description: scrape_table("http://www.eatbydate.com/proteins/meats/ham-shelf-life-expiration-date/")
+    },
+    {
+        
+        name: "Pork",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Dull, slimy flesh', 'Sour odor', 'brown or gray color'],
+        price: 7.66,
+        description: scrape_table("http://www.eatbydate.com/proteins/meats/how-long-does-pork-last/")
     },
     {
         name: 'Beans',
         days_until_expiration: 2,
-        type: 'produce',
+        type: 'Protein',
         signs_of_spoilage: ['brown spots', 'soft texture', 'shrunken', 'foul odor', 'mold'],
         price: 1.15,
-        description: 'Bean expiration dates can vary greatly depending on whether they are canned, dried, or fresh. Dried beans last indefinitely, canned beans last about a year, and fresh beans should be used within the week. Be sure to edit the expiration date accordingly.'
+        description: scrape_table("http://www.eatbydate.com/proteins/beans-peas/beans-shelf-life-expiration-date/")
     },
     {
-        name: 'Kale',
-        days_until_expiration: 14, 
-        type: 'produce',
-        signs_of_spoilage: ['wilting', 'slimy', 'discoloration', 'unusual odor'],
-        price: 2.97,
-        description: "Bagged kale keeps for a day or two past the printed date, and up to 5 days of opening the bag, while fresh kale lasts about 5 to 7 days. To maximize the shelf life, store kale in the fridge in a plastic bag, and postpone washing it until you're ready to eat it. Fresh kale will last up to one week in the fridge. Kale in a bag can last up to two weeks in the refrigerator."
+        
+        name: "Chicken",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Dull, slimy flesh', 'Sour smell'],
+        price: 13.71,
+        description: scrape_table("http://www.eatbydate.com/proteins/poultry/how-long-does-chicken-last-shelf-life-expiration-date/")
     },
     {
-        name: 'Potato',
-        days_until_expiration: 14,
-        type: 'produce',
-        signs_of_spoilage: ['dryness and shrinkage', 'mushy', 'foul odor', 'mold'],
-        price: 4.09,
-        description: 'Should be stored in a cool, dark, well-ventilated area. Sprouts are not a sign of spoilage. Sunlight causes green spots on potatoes and also do not indicate spoilage. Sprouts, green spots, dark spots, and bruises can all be cut off from potatoes and they can be used normally. Potatoes can be stored for about 2 weeks at room temperature and 3 or 4 weeks in the fridge.'
+        
+        name: "Tofu",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Tan color', 'Sour smell'],
+        price: 3.07,
+        description: scrape_table("http://www.eatbydate.com/proteins/beans-peas/how-long-does-tofu-last-shelf-life/")
     },
     {
-        name: 'Tomato',
-        days_until_expiration:
-        type: 'produce'
-        signs_of_spoilage:
-        price:
-        description: 
+        
+        name: "Turkey",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Dull, slimy flesh', 'Sour smell'],
+        price: 16.32,
+        description: scrape_table("http://www.eatbydate.com/proteins/poultry/turkey-shelf-life-expiration-date/")
     },
     {
-        name: 'Lamb',
-        days_until_expiration:
-        type: 'protein'
-        signs_of_spoilage:
-        price:
-        description: 
+        
+        name: "Fish",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Slimy, milky flesh', 'Rancid odor'],
+        price: 7.18,
+        description: scrape_table("http://www.eatbydate.com/proteins/seafood/fish-shelf-life-expiration-date/")
     },
     {
-        name: 'Chicken',
-        days_until_expiration:
-        type: 'protein'
-        signs_of_spoilage:
-        price:
-        description: 
+        
+        name: "Deli Meat",
+        days_until_expiration: 7,
+        type: "Protein",
+        signs_of_spoilage: ['Slimy, milky flesh', 'Rancid odor'],
+        price: 8.72,
+        description: scrape_table("http://www.eatbydate.com/proteins/meats/deli-meat-shelf-life-expiration-date/")
     },
     {
-        name: 'Turkey',
-        days_until_expiration:
-        type: 'protein'
-        signs_of_spoilage:
-        price:
-        description: 
-    }
-
+        
+        name: "Broccoli",
+        days_until_expiration: 7,
+        type: "Vegetable",
+        signs_of_spoilage: ['Foul odor', "Change in color", 'Limp texture'],
+        price: 5.13,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/broccoli/")
+    },
+    {
+        
+        name: "Carrots",
+        days_until_expiration: 28,
+        type: "Vegetable",
+        signs_of_spoilage: ['Mushy, slimy texture'],
+        price: 2.04,
+        description: scrape_table("http://www.eatbydate.com/vegetables/fresh-vegetables/how-long-do-carrots-last-shelf-life/")
+    },
+    
   ]
 )
 
