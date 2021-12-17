@@ -1,5 +1,6 @@
 class UserFoodsController < ApplicationController
     before_action :authorize
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 
     def index
@@ -38,5 +39,9 @@ class UserFoodsController < ApplicationController
 
     def invalid_record(invalid)
         render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
+    def record_not_found
+        render json: {error: "You do not have that food in your pantry"}, status: 404
     end
 end
