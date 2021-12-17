@@ -1,24 +1,17 @@
 class UserFoodsController < ApplicationController
+    before_action :authorize
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 
     def index
-        if session[:user_id]
-            user = User.find(session[:user_id])
-            render json: user.user_foods
-        else
-            unauthorized
-        end
+        user = User.find(session[:user_id])
+        render json: user.user_foods
     end
 
     def create
         user_food = UserFood.new(user_food_params)
-        if session[:user_id]
-            user_food.user_id = session[:user_id]
-            user_food.save
-            render json: user_food, status: :created
-        else
-            unauthorized
-        end
+        user_food.user_id = session[:user_id]
+        user_food.save
+        render json: user_food, status: :created
     end
 
     def update
@@ -27,14 +20,20 @@ class UserFoodsController < ApplicationController
         render json: user_food
     end
 
+    def destroy
+        user_food = UserFood.find(params[:id])
+        user_food.destroy
+        head :no_content
+    end
+
     private
 
     def user_food_params
         params.permit(:food_id, :user_price, :user_days_until_expiration, :quantity, :unit)
     end
 
-    def unauthorized
-        render json: {error: "Please log in."}, status: :unauthorized
+    def authorize
+        render json: {error: "Please log in."}, status: :unauthorized unless session.include? :user_id
     end
 
     def invalid_record(invalid)
