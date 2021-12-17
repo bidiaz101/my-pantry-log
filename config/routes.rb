@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources 'foods', only: [:index]
-  resources 'user_foods', only: [:index, :create]
+  resources 'user_foods', only: [:index, :create, :update]
 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
