@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     private
 
     def unauthorized
-        render json: { errors: ["Wrong username or password", "Note: usernames are not case-sensitive, but passwords are."] }, status: :unauthorized
+        render json: { error: "Wrong username or password. Passwords are case-sensitive" }, status: :unauthorized
     end
 
 end
