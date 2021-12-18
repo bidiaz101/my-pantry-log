@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from '../context/user'
+import {useHistory} from 'react-router-dom'
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false)
@@ -6,7 +8,10 @@ function Login() {
         username: '',
         password: ''
     })
-    const [error, setError] = useState("")
+
+    const {setUser} = useContext(UserContext)
+
+    const history = useHistory()
 
     function handleChange(e) {
         setFormData({
@@ -26,13 +31,14 @@ function Login() {
                 password: formData.password
             })
         })
-        .then(resp => {
-            if(resp.ok){
-                resp.json()
-                .then(data => console.log(data))
-            } else {
-                console.log(resp)
-            }
+        .then(resp => resp.json())
+        .then(data => {
+            setUser(data.username)
+            setFormData({
+                username: '',
+                password: ''
+            })
+            history.push('/all-foods')
         })
     }
 
