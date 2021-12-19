@@ -1,6 +1,19 @@
 import React,{ useState } from 'react'
 
-function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, setShowForm, setFoodData, inPantry=false }) {
+function FoodCard({ 
+    id, 
+    name, 
+    category, 
+    daysUntilExp, 
+    table, 
+    price, 
+    spoilage, 
+    setShowForm, 
+    setFoodData, 
+    inPantry=false, 
+    pantryItems,
+    setPantryItems 
+}) {
     const [showDeets, setShowDeets] = useState(false)
 
     const spoilageLis = spoilage.split(', ').map(item => {
@@ -24,6 +37,11 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, se
         })
     }
 
+    function handleRemove(id){
+        fetch(`/user_foods/${id}`, { method: "DELETE" })
+        .then(setPantryItems(pantryItems.filter(item => item.id !== id)))
+    }
+
     return (
         <div>
             <h1>{name}</h1>
@@ -38,7 +56,7 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, se
                 </>
             ) : null}
             <br />
-            {inPantry ? <button>Remove from My Pantry</button> : <button onClick={handleAdd}>Add to My Pantry</button>}
+            {inPantry ? <button onClick={() => handleRemove(id)}>Remove from My Pantry</button> : <button onClick={handleAdd}>Add to My Pantry</button>}
             <hr />
         </div>
     )

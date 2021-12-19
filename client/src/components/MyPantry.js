@@ -15,6 +15,7 @@ function MyPantry() {
 
         return (
             <FoodCard 
+                id={item.id}
                 name={name} 
                 category={category} 
                 price={item.user_price} 
@@ -22,6 +23,8 @@ function MyPantry() {
                 spoilage={item.food.signs_of_spoilage} 
                 inPantry={true} 
                 key={item.id}
+                pantryItems={pantryItems}
+                setPantryItems={setPantryItems}
             />
         )
     })
