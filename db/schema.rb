@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_203405) do
     t.float "user_price"
     t.integer "user_days_until_expiration"
     t.integer "quantity"
+    t.string "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "unit"

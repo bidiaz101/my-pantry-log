@@ -6,6 +6,7 @@ class CreateUserFoods < ActiveRecord::Migration[6.1]
       t.float :user_price
       t.integer :user_days_until_expiration
       t.integer :quantity
+      t.string :notes
 
       t.timestamps
     end
