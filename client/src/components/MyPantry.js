@@ -25,15 +25,17 @@ function MyPantry() {
                 key={item.id}
                 pantryItems={pantryItems}
                 setPantryItems={setPantryItems}
+                quantity={item.quantity}
+                unit={item.unit}
+                notes={item.notes}
             />
         )
     })
 
     return (
-        <>
-            <h1>My Pantry</h1>
+        <div className="grid-container-formless">
             {itemsToDisplay}
-        </>
+        </div>
     )
 }
 

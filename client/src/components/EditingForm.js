@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function EditingForm({foodData, setFoodData}){
-    const [expDate, setExpDate] = useState('')
+function EditingForm({foodData, setFoodData, added, setAdded}){
 
     function handleChange(e){
         setFoodData({
@@ -27,8 +26,7 @@ function EditingForm({foodData, setFoodData}){
                 notes: notes
             })
         })
-        .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(setAdded(true))
     }
     
     return (
@@ -59,6 +57,7 @@ function EditingForm({foodData, setFoodData}){
             <textarea name='notes' placeholder='Maybe note the type of food (sourdough bread, skim milk, granny smith apples, brie cheese, etc.). Anything future you might find helpful when checking if the food is still good.' rows="5" cols="40" onChange={e => handleChange(e)} />
             <br />
             <input type='submit' value='Done!' />
+            {added? <p>Successfully added to <a href='/my-pantry'>My Pantry</a>!</p> : null}
         </form>
     )
 }

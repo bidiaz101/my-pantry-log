@@ -25,10 +25,10 @@ function App() {
   return (
     <div className="doodle">
       {user.username ? (
-        <>
+        <div id='user-container'>
           <p>Hello {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
-        </>
+        </div>
       ) : (
         <>
           <Link to="/login">
@@ -43,8 +43,8 @@ function App() {
       <Link to="/">
         <Header />
       </Link>
-      <hr />
       {user.username? <Navbar /> : null}
+      <hr />
       <Switch>
         <Route exact path='/'>
           <Home />

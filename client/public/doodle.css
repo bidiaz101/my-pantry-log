@@ -44,8 +44,9 @@
   
   .doodle .border, .doodle-border, #unopened {
     border-style: solid;
-    border-width: 6px 6px 6px 6px;
+    border-width: 3px 3px 3px 3px;
     border-image: url(button.svg) 10 10 10 10 stretch stretch;
+    padding: 20px;
   }
   
   .doodle button, .doodle input, .doodle select {
@@ -174,3 +175,33 @@
       position: fixed;
       margin-left: 50%;
   }
+
+  .doodle #header{
+    float: left;
+    margin-left: 2%;
+  }
+
+  .doodle #user-container{
+    float: right;
+    margin-right: 2%;
+  }
+  #navbar{
+    padding: 30px;
+    font-size: large;
+    display: flex;
+    justify-content:space-evenly;
+    float: center;
+  }
+  #navbar .active{
+    background-color: rgb(255, 251, 44);
+  }
+  .grid-container-formless{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .grid-container-form{
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+

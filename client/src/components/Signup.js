@@ -36,7 +36,7 @@ function Signup() {
         })
         .then(resp => resp.json())
         .then(data => {
-            setUser(data.username)
+            setUser(data)
             history.push('/all-foods')
         })
     }

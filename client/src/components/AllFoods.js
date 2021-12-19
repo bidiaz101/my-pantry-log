@@ -17,6 +17,7 @@ function AllFoods() {
         units: '',
         notes: ''
     })
+    const [added, setAdded] = useState(false)
 
     useEffect(() => {
         fetch('/foods')
@@ -41,6 +42,7 @@ function AllFoods() {
                 setShowForm={setShowForm}
                 setFoodData={setFoodData}
                 key={food.id}
+                setAdded={setAdded}
             />
         )
     })
@@ -48,25 +50,30 @@ function AllFoods() {
     return (
         <div>
             <div className={showForm ? 'column-1' : null} >
-                <label>Search: </label>
-                <input type='text' onChange={e => setSearch(e.target.value.toLowerCase())}/>
-                <br />
-                <label>Filter by Category: </label>
-                <select name="category-filter" onChange={(e) => setFilter(e.target.value)} >
-                    <option value="">All</option>
-                    <option value="Dairy">Dairy</option>
-                    <option value="Protein">Protein</option>
-                    <option value="Fruit">Fruits</option>
-                    <option value="Vegetable">Vegetables</option>
-                    <option value="Beverage">Beverages</option>
-                    <option value="Grains">Grains</option>
-                    <option value="Other">Other</option>
-                </select>
-                {foodsToDisplay}
+                <div className='food-controls'>
+                    <label>Search: </label>
+                    <input type='text' onChange={e => setSearch(e.target.value.toLowerCase())}/>
+                    <br />
+                    <label>Filter by Category: </label>
+                    <select name="category-filter" onChange={(e) => setFilter(e.target.value)} >
+                        <option value="">All</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Protein">Protein</option>
+                        <option value="Fruit">Fruits</option>
+                        <option value="Vegetable">Vegetables</option>
+                        <option value="Beverage">Beverages</option>
+                        <option value="Grains">Grains</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <hr />
+                <div className={showForm? 'grid-container-form' : 'grid-container-formless'}>
+                    {foodsToDisplay}
+                </div>
             </div>
             {showForm ? (
                 <div className={showForm ? 'column-2' : null} >
-                    <EditingForm foodData={foodData} setFoodData={setFoodData} />
+                    <EditingForm foodData={foodData} setFoodData={setFoodData} added={added} setAdded={setAdded} />
                 </div>
             ) : null}
         </div>

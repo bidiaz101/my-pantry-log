@@ -12,7 +12,11 @@ function FoodCard({
     setFoodData, 
     inPantry=false, 
     pantryItems,
-    setPantryItems 
+    setPantryItems,
+    setAdded, 
+    quantity,
+    unit,
+    notes
 }) {
     const [showDeets, setShowDeets] = useState(false)
 
@@ -24,6 +28,7 @@ function FoodCard({
     })
 
     function handleAdd(){
+        setAdded(false)
         setShowForm(true)
         setFoodData({
             id: id,
@@ -43,8 +48,15 @@ function FoodCard({
     }
 
     return (
-        <div>
+        <div className='doodle-border'>
             <h1>{name}</h1>
+            {inPantry? (
+                <>
+                <br />
+                <p>Quantity: {quantity} {unit}</p>
+                <p>Notes: {notes || "None"}</p>
+                </>
+            ) : null}
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
                 <>
@@ -57,7 +69,6 @@ function FoodCard({
             ) : null}
             <br />
             {inPantry ? <button onClick={() => handleRemove(id)}>Remove from My Pantry</button> : <button onClick={handleAdd}>Add to My Pantry</button>}
-            <hr />
         </div>
     )
 }
