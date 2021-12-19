@@ -4,6 +4,7 @@ import FoodCard from './FoodCard'
 function AllFoods() {
     const [foods, setFoods] = useState([])
     const [filter, setFilter] = useState('')
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         fetch('/foods')
@@ -13,6 +14,8 @@ function AllFoods() {
 
     const foodsToDisplay = foods.filter(food => {
         return food.category.includes(filter)
+    }).filter(food => {
+        return food.name.toLowerCase().includes(search)
     }).map(food => {
         return (
             <FoodCard 
@@ -30,6 +33,9 @@ function AllFoods() {
 
     return (
         <div>
+            <label>Search: </label>
+            <input type='text' onChange={e => setSearch(e.target.value.toLowerCase())}/>
+            <br />
             <label>Filter by Category: </label>
             <select name="category-filter" onChange={(e) => setFilter(e.target.value)} >
                 <option value="">All</option>
