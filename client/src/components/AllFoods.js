@@ -3,6 +3,7 @@ import FoodCard from './FoodCard'
 
 function AllFoods() {
     const [foods, setFoods] = useState([])
+    const [filter, setFilter] = useState('')
 
     useEffect(() => {
         fetch('/foods')
@@ -10,7 +11,9 @@ function AllFoods() {
         .then(data => setFoods(data))
     }, [])
 
-    const foodsToDisplay = foods.map(food => {
+    const foodsToDisplay = foods.filter(food => {
+        return food.category.includes(filter)
+    }).map(food => {
         return (
             <FoodCard 
                 id={food.id}
@@ -27,6 +30,17 @@ function AllFoods() {
 
     return (
         <div>
+            <label>Filter by Category: </label>
+            <select name="category-filter" onChange={(e) => setFilter(e.target.value)} >
+                <option value="">All</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Protein">Protein</option>
+                <option value="Fruit">Fruits</option>
+                <option value="Vegetable">Vegetables</option>
+                <option value="Beverage">Beverages</option>
+                <option value="Grains">Grains</option>
+                <option value="Other">Other</option>
+            </select>
             {foodsToDisplay}
         </div>
     )

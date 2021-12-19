@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 
 function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage }) {
     const [showDeets, setShowDeets] = useState(false)
+    const [filter, setFilter] = useState("")
 
     const spoilageLis = spoilage.split(', ').map(item => {
         if(!item) return <li key="honey">Never spoils</li>
