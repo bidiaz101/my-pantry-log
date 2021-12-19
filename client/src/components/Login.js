@@ -8,6 +8,7 @@ function Login() {
         username: '',
         password: ''
     })
+    const [error, setError] = useState('')
 
     const {setUser} = useContext(UserContext)
 
@@ -31,14 +32,20 @@ function Login() {
                 password: formData.password
             })
         })
-        .then(resp => resp.json())
-        .then(data => {
-            setUser(data.username)
-            setFormData({
-                username: '',
-                password: ''
-            })
-            history.push('/all-foods')
+        .then(resp => {
+            if(resp.ok){
+                resp.json()
+                .then(data => {
+                    setUser(data)
+                    setFormData({
+                        username: '',
+                        password: ''
+                    })
+                    history.push('/all-foods')
+                })
+            } else {
+                resp.json().then(resp => setError(resp.error))
+            }
         })
     }
 
@@ -50,7 +57,8 @@ function Login() {
             <br />
             <label>Password: </label>
             <input type={showPassword ? 'text' : 'password'} name='password' onChange={(e) => handleChange(e)} value={formData.password} />
-            <div id="pw-toggle" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "X" : "👁"}</div>
+            <p id="pw-toggle" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "X" : "👁"}</p>
+            {error ? <p className='error'>{error}</p> : null}
             <input type="submit" value="Login" />
         </form>
     )

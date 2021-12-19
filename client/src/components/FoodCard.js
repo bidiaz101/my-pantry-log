@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 
-function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, setShowForm }) {
+function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, setShowForm, setFoodData }) {
     const [showDeets, setShowDeets] = useState(false)
 
     const spoilageLis = spoilage.split(', ').map(item => {
@@ -9,6 +9,16 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, se
         const newItem = item.replace(item[0], item[0].toUpperCase())
         return <li key={item}>{newItem}</li>
     })
+
+    function handleAdd(){
+        setShowForm(true)
+        setFoodData({
+            name: name,
+            category: category,
+            signs_of_spoilage: spoilage,
+            user_price: price
+        })
+    }
 
     return (
         <div>
@@ -24,7 +34,7 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, se
                 </>
             ) : null}
             <br />
-            <button onClick={() => setShowForm(true)}>Add to My Pantry</button>
+            <button onClick={handleAdd}>Add to My Pantry</button>
             <hr />
         </div>
     )

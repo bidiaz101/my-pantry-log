@@ -1,5 +1,4 @@
-import React, {useContext} from 'react'
-// import '../App.css';
+import React, { useContext } from 'react'
 import { Switch, Route, Link, useHistory } from 'react-router-dom'
 import Home from './Home'
 import Header from './Header'
@@ -16,15 +15,18 @@ function App() {
 
   function handleLogout(){
     fetch('/logout', { method: "DELETE" })
-    .then(setUser(""))
+    .then(setUser({
+      id: 0,
+      username: ''
+    }))
     history.push('/login')
   }
 
   return (
     <div className="doodle">
-      {user ? (
+      {user.username ? (
         <>
-          <p>Hello {user}!</p>
+          <p>Hello {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
@@ -41,7 +43,8 @@ function App() {
       <Link to="/">
         <Header />
       </Link>
-      {user? <Navbar /> : null}
+      <hr />
+      {user.username? <Navbar /> : null}
       <Switch>
         <Route exact path='/'>
           <Home />

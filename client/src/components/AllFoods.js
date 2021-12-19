@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import FoodCard from './FoodCard'
 import EditingForm from './EditingForm'
 
@@ -7,6 +7,12 @@ function AllFoods() {
     const [filter, setFilter] = useState('')
     const [search, setSearch] = useState('')
     const [showForm, setShowForm] = useState(false)
+    const [foodData, setFoodData] = useState({
+        name: '',
+        category: '',
+        user_price: 0,
+        signs_of_spoilage: ''
+    })
 
     useEffect(() => {
         fetch('/foods')
@@ -28,8 +34,8 @@ function AllFoods() {
                 table={food.description}
                 price={food.price}
                 spoilage={food.signs_of_spoilage}
-                showForm={showForm}
                 setShowForm={setShowForm}
+                setFoodData={setFoodData}
                 key={food.id}
             />
         )
@@ -56,7 +62,7 @@ function AllFoods() {
             </div>
             {showForm ? (
                 <div className={showForm ? 'column-2' : null} >
-                    <EditingForm />
+                    <EditingForm foodData={foodData} setFoodData={setFoodData} />
                 </div>
             ) : null}
         </div>
