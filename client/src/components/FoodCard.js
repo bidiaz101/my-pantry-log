@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 
-function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage }) {
+function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, setShowForm }) {
     const [showDeets, setShowDeets] = useState(false)
 
     const spoilageLis = spoilage.split(', ').map(item => {
@@ -23,6 +23,9 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage }) 
                     <ul>{spoilageLis}</ul>
                 </>
             ) : null}
+            <br />
+            <button onClick={() => setShowForm(true)}>Add to My Pantry</button>
+            <hr />
         </div>
     )
 }
