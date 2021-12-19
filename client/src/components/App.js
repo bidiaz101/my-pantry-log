@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import '../App.css';
+// import '../App.css';
 import { Switch, Route, Link, useHistory } from 'react-router-dom'
 import Home from './Home'
 import Header from './Header'
@@ -21,7 +21,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="doodle">
       {user ? (
         <>
           <p>Hello {user}!</p>
