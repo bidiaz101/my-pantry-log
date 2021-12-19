@@ -30,7 +30,7 @@ class UserFoodsController < ApplicationController
     private
 
     def user_food_params
-        params.permit(:food_id, :user_price, :user_days_until_expiration, :quantity, :unit)
+        params.permit(:food_id, :user_price, :user_days_until_expiration, :quantity, :unit, :notes)
     end
 
     def authorize

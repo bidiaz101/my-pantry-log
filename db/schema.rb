@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2021_12_17_203405) do
   end
 
   create_table "user_foods", force: :cascade do |t|
-    t.string "user_id"
-    t.string "food_id"
+    t.integer "user_id"
+    t.integer "food_id"
     t.float "user_price"
     t.integer "user_days_until_expiration"
     t.integer "quantity"

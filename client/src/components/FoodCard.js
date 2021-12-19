@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 
-function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, setShowForm, setFoodData }) {
+function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, setShowForm, setFoodData, inPantry=false }) {
     const [showDeets, setShowDeets] = useState(false)
 
     const spoilageLis = spoilage.split(', ').map(item => {
@@ -13,10 +13,14 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, se
     function handleAdd(){
         setShowForm(true)
         setFoodData({
+            id: id,
             name: name,
             category: category,
-            signs_of_spoilage: spoilage,
-            user_price: price
+            price: price,
+            daysUntilExp: daysUntilExp,
+            quantity: 1,
+            unit: name + 's',
+            notes: ''
         })
     }
 
@@ -27,14 +31,14 @@ function FoodCard({ id, name, category, daysUntilExp, table, price, spoilage, se
             {showDeets? (
                 <>
                     <p>Category: {category}</p>
-                    <p>Price Estimate: ${price}</p>
+                    <p>Price{inPantry ? null : " Estimate"}: ${price}</p>
                     <div dangerouslySetInnerHTML={{__html: table}} />
                     <h3>Signs of Spoilage</h3>
                     <ul>{spoilageLis}</ul>
                 </>
             ) : null}
             <br />
-            <button onClick={handleAdd}>Add to My Pantry</button>
+            {inPantry ? <button>Remove from My Pantry</button> : <button onClick={handleAdd}>Add to My Pantry</button>}
             <hr />
         </div>
     )

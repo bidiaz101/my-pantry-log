@@ -8,10 +8,14 @@ function AllFoods() {
     const [search, setSearch] = useState('')
     const [showForm, setShowForm] = useState(false)
     const [foodData, setFoodData] = useState({
+        id: 0,
         name: '',
         category: '',
-        user_price: 0,
-        signs_of_spoilage: ''
+        price: 0,
+        daysUntilExp: 0,
+        quantity: 0,
+        units: '',
+        notes: ''
     })
 
     useEffect(() => {
