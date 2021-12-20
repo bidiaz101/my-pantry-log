@@ -23,7 +23,7 @@ function Login() {
 
     function handleSubmit(e){
         e.preventDefault()
-
+        
         fetch('/login', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -37,9 +37,14 @@ function Login() {
                 resp.json()
                 .then(data => {
                     setUser(data)
-                    setFormData({
-                        username: '',
-                        password: ''
+                    // setFormData({
+                    //     username: '',
+                    //     password: ''
+                    // })
+                    fetch(`/users/${data.id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ last_login: new Date() })
                     })
                     history.push('/all-foods')
                 })

@@ -5,7 +5,8 @@ const UserContext = React.createContext("")
 function UserProvider({children}) {
     const [user, setUser] = useState({
         id: 0,
-        username: ''
+        username: '',
+        last_login: ''
     })
 
     useEffect(() => {

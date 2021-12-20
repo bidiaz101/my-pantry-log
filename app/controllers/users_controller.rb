@@ -8,6 +8,12 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def update
+        user = User.find(session[:user_id])
+        user.update(user_params)
+        render json: user, status: :accepted
+    end
+
     def show
         current_user = User.find(session[:user_id])
         render json: current_user, status: :created
@@ -16,7 +22,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation)
+        params.permit(:username, :password, :password_confirmation, :last_login)
     end
 
     def record_invalid(invalid)

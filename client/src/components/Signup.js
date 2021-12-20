@@ -6,12 +6,13 @@ function Signup() {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
     })
 
     function handleChange(e){
         setFormData({
             ...formData,
+            last_login: new Date(),
             [e.target.name]: e.target.value
         })
     }

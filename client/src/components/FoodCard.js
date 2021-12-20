@@ -51,21 +51,21 @@ function FoodCard({
         <div className='doodle-border'>
             <h1>{name}</h1>
             {inPantry? (
-                <>
-                <br />
-                <p>Quantity: {quantity} {unit}</p>
-                <p>Notes: {notes || "None"}</p>
-                </>
+            <>
+            <br />
+            <p>Quantity: {quantity} {unit}</p>
+            <p>Notes: {notes || "None"}</p>
+            </>
             ) : null}
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
-                <>
-                    <p>Category: {category}</p>
-                    <p>Price{inPantry ? null : " Estimate"}: ${price}</p>
-                    <div dangerouslySetInnerHTML={{__html: table}} />
-                    <h3>Signs of Spoilage</h3>
-                    <ul>{spoilageLis}</ul>
-                </>
+            <>
+            <p>Category: {category}</p>
+            <p>Price{inPantry ? null : " Estimate"}: ${price}</p>
+            <div dangerouslySetInnerHTML={{__html: table}} />
+            <h3>Signs of Spoilage</h3>
+            <ul>{spoilageLis}</ul>
+            </>
             ) : null}
             <br />
             {inPantry ? <button onClick={() => handleRemove(id)}>Remove from My Pantry</button> : <button onClick={handleAdd}>Add to My Pantry</button>}
