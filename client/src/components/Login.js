@@ -37,15 +37,6 @@ function Login() {
                 resp.json()
                 .then(data => {
                     setUser(data)
-                    // setFormData({
-                    //     username: '',
-                    //     password: ''
-                    // })
-                    fetch(`/users/${data.id}`, {
-                        method: 'PATCH',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ last_login: new Date() })
-                    })
                     history.push('/all-foods')
                 })
             } else {
@@ -55,15 +46,16 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='form' >
             <h1>Login: </h1>
             <label>Username: </label>
             <input type="text" name='username' value={formData.username} onChange={(e) => handleChange(e)}/>
             <br />
             <label>Password: </label>
             <input type={showPassword ? 'text' : 'password'} name='password' onChange={(e) => handleChange(e)} value={formData.password} />
-            <p id="pw-toggle" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "X" : "👁"}</p>
+            <span id="pw-toggle" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "X" : "👁"}</span>
             {error ? <p className='error'>{error}</p> : null}
+            <br />
             <input type="submit" value="Login" />
         </form>
     )
