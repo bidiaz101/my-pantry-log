@@ -86,7 +86,7 @@ function FoodCard({
             <>
             <p>Days Left: {daysUntilExp} days</p>
             <div id="counter-bar">
-                <div id={divId} style={{width: (daysUntilExp/14) * 100 + '%'}} />
+                <div id={divId} style={{width: Math.round((daysUntilExp/14) * 100) + '%'}} />
             </div>
             <p>Quantity: {quantity} {unit}</p>
             <p>Notes: {notes || "None"}</p>
