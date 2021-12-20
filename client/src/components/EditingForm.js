@@ -35,7 +35,7 @@ function EditingForm({foodData, setFoodData, added, setAdded}){
         if (foodData.expDate){
             const dayInMs = 86400000
             const daysFloat = (new Date(foodData.expDate).getTime() - new Date().getTime()) / dayInMs
-            daysInt = Math.round(daysFloat) + daysUntilExp + 1
+            daysInt = Math.round(daysFloat) + daysUntilExp
         } else {
             daysInt = daysUntilExp
         }
@@ -70,7 +70,7 @@ function EditingForm({foodData, setFoodData, added, setAdded}){
             <button type='button' onClick={handleDate}>{dateExists ? "No exp. date" : "Enter exp. date"}</button>
             <br />
 
-            <label>Past Printed Date (in Days): </label>
+            <label>{dateExists ? "Past Printed Date" : "Shelf Life"} (in Days): </label>
             <input type='number' min='0' name='daysUntilExp' value={foodData.daysUntilExp} onChange={e => handleChange(e)} />
             <br />
 
