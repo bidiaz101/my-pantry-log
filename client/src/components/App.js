@@ -48,13 +48,13 @@ function App() {
         </>
         )
       }
-      <Link to="/about">
+      <Link to="/">
         <Header />
       </Link>
       {user.username? <Navbar /> : null}
       <hr />
       <Switch>
-        <Route path='/about'>
+        <Route path='/'>
           <About />
         </Route>
         <Route path='/login'>
