@@ -208,3 +208,14 @@
 span{
   padding: 10px;
 }
+
+.doodle .remove-btn{
+  color: rgb(255, 255, 255);
+  background-color: rgb(206, 24, 24);
+  float: right;
+}
+
+.doodle .eaten-btn{
+  background-color: rgb(106, 187, 149);
+  float: left;
+}

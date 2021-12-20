@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation, :last_login)
+        params.permit(:username, :password, :password_confirmation, :last_login, :money_saved)
     end
 
     def record_invalid(invalid)

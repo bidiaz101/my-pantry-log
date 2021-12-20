@@ -1,4 +1,5 @@
-import React,{ useState } from 'react'
+import React,{ useState, useContext } from 'react'
+import { UserContext } from '../context/user'
 
 function FoodCard({ 
     id, 
@@ -49,8 +50,27 @@ function FoodCard({
         .then(setPantryItems(pantryItems.filter(item => item.id !== id)))
     }
 
+    const {user, setUser} = useContext(UserContext)
+
+    function handleEaten(id){
+        const moneySaved = user.money_saved + price
+        fetch(`/users/${user.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                money_saved: moneySaved
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            handleRemove(id)
+            setUser(data)
+        })
+    }
+
     return (
         <div className='doodle-border'>
+            {inPantry ? <button onClick={() => handleRemove(id)} className='remove-btn'><strong>X</strong></button> : null}
             <h1>{name}</h1>
             {inPantry? (
             <>
@@ -59,6 +79,7 @@ function FoodCard({
             <p>Notes: {notes || "None"}</p>
             </>
             ) : null}
+
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
             <>
@@ -70,7 +91,14 @@ function FoodCard({
             </>
             ) : null}
             <br />
-            {inPantry ? <button onClick={() => handleRemove(id)}>Remove from My Pantry</button> : <button onClick={handleAdd}>Add to My Pantry</button>}
+            {inPantry ? (
+            <>
+            <button onClick={() => handleEaten(id)} className='eaten-btn'>Eaten</button>
+            <button onClick={() => handleRemove(id)} className='remove-btn'>Spoiled</button>
+            </>
+            ) : (
+            <button onClick={handleAdd}>Add to My Pantry</button>
+            )}
         </div>
     )
 }

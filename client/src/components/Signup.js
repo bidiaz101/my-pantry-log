@@ -12,6 +12,7 @@ function Signup() {
     function handleChange(e){
         setFormData({
             ...formData,
+            money_saved: 0,
             last_login: new Date(),
             [e.target.name]: e.target.value
         })
@@ -19,6 +20,7 @@ function Signup() {
 
     const {setUser} = useContext(UserContext)
     const history = useHistory()
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e){
         e.preventDefault()
@@ -27,32 +29,46 @@ function Signup() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
-        fetch('/login', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username: formData.username.toLowerCase(),
-                password: formData.password
-            })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            setUser(data)
-            history.push('/all-foods')
+        .then(resp => {
+            if(resp.ok){
+                fetch('/login', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        username: formData.username.toLowerCase(),
+                        password: formData.password
+                    })
+                })
+                .then(r => r.json())
+                .then(data => {
+                    setUser(data)
+                    history.push('/all-foods')
+                })
+            } else {
+                resp.json().then(resp => setErrors(resp.errors))
+            }
         })
     }
+
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <form onSubmit={handleSubmit}>
             <label>Username: </label>
             <input type="text" name='username' value={formData.username} onChange={e => handleChange(e)} />
             <br />
+
             <label>Password: </label>
-            <input type="password" name='password' value={formData.password} onChange={e => handleChange(e)} />
+            <input type={showPassword ? 'text' : 'password'} name='password' value={formData.password} onChange={e => handleChange(e)} />
             <br />
+
             <label>Password Confirmation: </label>
-            <input type='password' name='password_confirmation' value={formData.password_confirmation} onChange={e => handleChange(e)} />
+            <input type={showPassword ? 'text' : 'password'} name='password_confirmation' value={formData.password_confirmation} onChange={e => handleChange(e)} />
+            <span id="pw-toggle" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "X" : "👁"}</span>
             <br />
+
+            {errors.length ? errors.map(error => <p key={error} >{error}</p>) : null}
+            
             <input type='submit' name='Sign up' />
         </form>
     )

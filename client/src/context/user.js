@@ -6,7 +6,8 @@ function UserProvider({children}) {
     const [user, setUser] = useState({
         id: 0,
         username: '',
-        last_login: ''
+        last_login: '',
+        money_saved: 0.00
     })
 
     useEffect(() => {

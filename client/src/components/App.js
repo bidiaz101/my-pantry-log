@@ -27,11 +27,14 @@ function App() {
     history.push('/login')
   }
 
+  const saved = Math.round((user.money_saved + Number.EPSILON) * 100) / 100
+
   return (
     <div className="doodle">
       {user.username ? (
         <div id='user-container'>
           <p>Hello {user.username}!</p>
+          <p>${saved} saved</p>
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
