@@ -15,7 +15,8 @@ function AllFoods() {
         daysUntilExp: 0,
         quantity: 0,
         units: '',
-        notes: ''
+        notes: '',
+        expDate: ''
     })
     const [added, setAdded] = useState(false)
 

@@ -30,6 +30,7 @@ function FoodCard({
     function handleAdd(){
         setAdded(false)
         setShowForm(true)
+        setShowDeets(true)
         setFoodData({
             id: id,
             name: name,
@@ -37,8 +38,9 @@ function FoodCard({
             price: price,
             daysUntilExp: daysUntilExp,
             quantity: 1,
-            unit: name + 's',
-            notes: ''
+            unit: name.slice(-1) === 's' ? name : name + 's',
+            notes: '',
+            expDate: ''
         })
     }
 
@@ -52,7 +54,7 @@ function FoodCard({
             <h1>{name}</h1>
             {inPantry? (
             <>
-            <br />
+            <p>Days Left: {daysUntilExp} days</p>
             <p>Quantity: {quantity} {unit}</p>
             <p>Notes: {notes || "None"}</p>
             </>

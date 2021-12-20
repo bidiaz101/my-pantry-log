@@ -28,6 +28,7 @@ function MyPantry() {
                 quantity={item.quantity}
                 unit={item.unit}
                 notes={item.notes}
+                daysUntilExp={item.user_days_until_expiration}
             />
         )
     })
