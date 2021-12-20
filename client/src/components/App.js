@@ -54,7 +54,7 @@ function App() {
       {user.username? <Navbar /> : null}
       <hr />
       <Switch>
-        <Route path='/'>
+        <Route exact path='/'>
           <About />
         </Route>
         <Route path='/login'>
