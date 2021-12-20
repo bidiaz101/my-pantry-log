@@ -68,6 +68,16 @@ function FoodCard({
         })
     }
 
+    let divId
+
+    if(daysUntilExp >=14){
+        divId = 'bar-good'
+    } else if(daysUntilExp < 14 && daysUntilExp > 4){
+        divId = 'bar-warning'
+    } else {
+        divId = 'bar-bad'
+    }
+
     return (
         <div className='doodle-border'>
             {inPantry ? <button onClick={() => handleRemove(id)} className='remove-btn'><strong>X</strong></button> : null}
@@ -75,6 +85,9 @@ function FoodCard({
             {inPantry? (
             <>
             <p>Days Left: {daysUntilExp} days</p>
+            <div id="counter-bar">
+                <div id={divId} style={{width: (daysUntilExp/14) * 100 + '%'}} />
+            </div>
             <p>Quantity: {quantity} {unit}</p>
             <p>Notes: {notes || "None"}</p>
             </>

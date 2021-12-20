@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Switch, Route, Link, useHistory } from 'react-router-dom'
-import Home from './Home'
+import About from './About'
 import Header from './Header'
 import Navbar from './Navbar'
 import Login from './Login'
@@ -48,14 +48,14 @@ function App() {
         </>
         )
       }
-      <Link to="/">
+      <Link to="/about">
         <Header />
       </Link>
       {user.username? <Navbar /> : null}
       <hr />
       <Switch>
-        <Route exact path='/'>
-          <Home />
+        <Route path='/about'>
+          <About />
         </Route>
         <Route path='/login'>
           <Login />
