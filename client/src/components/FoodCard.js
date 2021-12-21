@@ -82,8 +82,6 @@ function FoodCard({
         divId = 'bar-bad'
     }
 
-    
-
     return (
         <div className='doodle-border'>
             {inPantry ? <button onClick={() => handleRemove(id)} className='remove-btn'><strong>X</strong></button> : null}
@@ -96,6 +94,7 @@ function FoodCard({
             </div>
             <p>Quantity: {quantity} {unit}</p>
             <p>Notes: {notes || "None"}</p>
+            {divId !== 'bar-good' ? <p>I need a <a href={`https://www.allrecipes.com/search/results/?search=${name}`} target='_blank' >recipe</a>!</p> : null}
             </>
             ) : null}
 
