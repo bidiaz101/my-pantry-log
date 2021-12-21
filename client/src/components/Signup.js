@@ -54,6 +54,7 @@ function Signup() {
 
     return (
         <form onSubmit={handleSubmit}>
+            <h1>Sign Up</h1>
             <label>Username: </label>
             <input type="text" name='username' value={formData.username} onChange={e => handleChange(e)} />
             <br />

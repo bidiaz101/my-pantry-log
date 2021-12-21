@@ -91,7 +91,7 @@ function EditingForm({foodData, setFoodData, added, setAdded}){
 
             <label>Notes: </label>
             <br />
-            <textarea name='notes' placeholder='Maybe note the type of food (sourdough bread, skim milk, granny smith apples, brie cheese, stored in freezer, in pantry, etc.). Anything future you might find helpful when checking if the food is still good.' rows="5" cols="45" onChange={e => handleChange(e)} />
+            <textarea name='notes' placeholder='sourdough bread, skim milk, granny smith apples, brie cheese, stored in freezer, in pantry, etc. Anything useful to future you' rows="5" cols="45" onChange={e => handleChange(e)} />
             <br />
 
             <input type='submit' value='Done!' />

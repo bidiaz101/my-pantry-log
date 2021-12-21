@@ -129,14 +129,14 @@
 }
 
 .doodle .column-1{
-    width: 50%;
+    width: 60%;
     float: left;
 }
 
 .doodle .column-2{
-    width: 50%;
+    width: 40%;
     position: fixed;
-    margin-left: 50%;
+    margin-left: 60%;
 }
 
 .doodle #header{
@@ -147,7 +147,14 @@
 .doodle #user-container{
   float: right;
   margin-right: 2%;
+  margin-top: 2%;
 }
+
+.doodle #user-container p{
+  display: inline;
+  padding: 10px;
+}
+
 #navbar{
   padding: 30px;
   font-size: large;

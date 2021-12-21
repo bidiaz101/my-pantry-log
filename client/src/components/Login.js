@@ -47,7 +47,7 @@ function Login() {
 
     return (
         <form onSubmit={handleSubmit} className='form' >
-            <h1>Login: </h1>
+            <h1>Login </h1>
             <label>Username: </label>
             <input type="text" name='username' value={formData.username} onChange={(e) => handleChange(e)}/>
             <br />

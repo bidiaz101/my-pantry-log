@@ -71,10 +71,12 @@ function FoodCard({
     let divId
     let divWidth
 
-    if(daysUntilExp >=14){
+    if(daysUntilExp > 14){
         divId = 'bar-good'
         divWidth = 100
-    } else if(daysUntilExp < 14 && daysUntilExp > 4){
+    } else if(daysUntilExp <=14 && daysUntilExp >= 10){
+        divId = 'bar-good'
+    } else if(daysUntilExp < 10 && daysUntilExp > 4){
         divId = 'bar-warning'
     } else {
         divId = 'bar-bad'
