@@ -69,14 +69,18 @@ function FoodCard({
     }
 
     let divId
+    let divWidth
 
     if(daysUntilExp >=14){
         divId = 'bar-good'
+        divWidth = 100
     } else if(daysUntilExp < 14 && daysUntilExp > 4){
         divId = 'bar-warning'
     } else {
         divId = 'bar-bad'
     }
+
+    
 
     return (
         <div className='doodle-border'>
@@ -86,7 +90,7 @@ function FoodCard({
             <>
             <p>Days Left: {daysUntilExp} days</p>
             <div id="counter-bar">
-                <div id={divId} style={{width: Math.round((daysUntilExp/14) * 100) + '%'}} />
+                <div id={divId} style={{width: (divWidth || ((daysUntilExp/14) * 100)) + '%'}} />
             </div>
             <p>Quantity: {quantity} {unit}</p>
             <p>Notes: {notes || "None"}</p>
