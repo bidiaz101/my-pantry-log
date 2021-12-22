@@ -12,8 +12,6 @@ function Signup() {
     function handleChange(e){
         setFormData({
             ...formData,
-            money_saved: 0,
-            last_login: new Date(),
             [e.target.name]: e.target.value
         })
     }
@@ -27,7 +25,13 @@ function Signup() {
         fetch('/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            body: JSON.stringify({
+                username: formData.username.toLowerCase(),
+                password: formData.password,
+                password_confirmation: formData.password_confirmation,
+                money_saved: 0,
+                last_login: new Date()
+            })
         })
         .then(resp => {
             if(resp.ok){
