@@ -12,8 +12,6 @@ In addition to the wasted food resources are also wasted in producing food that 
 
 This app intends to spead awareness about food waste and incentivize users to keep track of food that they buy.
 
-<!-- Bill emerson good samaritan food donation act -->
-
 ## Features
 Users can log expiration dates of foods at risk of spoilage. The app will have foods that the user can put in their digital pantry/refrigerator and note the quantity. 
 
@@ -34,7 +32,6 @@ My app will link over to [allrecipes.com](https://www.allrecipes.com/) with thei
 
 If any users run restuarants or have access to large quantities of food that they cannot sell, the site will also have info on the [Bill Emerson Good Samaritan Food Donation Act](https://www.fns.usda.gov/tefap/information-bill-emerson-good-samaritan-food-act) which states a food donor cannot be held legally liable for the "nature, age, packaging, or condition of apparently wholesome food."
 
-My Pantry Log uses a React frontend, Ruby on Rails for the backend, and Postgresql 
-for creating the relational database.
+My Pantry Log uses a React frontend and Ruby on Rails for the backend.
 
 For suggestions on how to improve the application contact me at bidiaz101@gmail.com

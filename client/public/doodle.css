@@ -2,8 +2,11 @@
   box-sizing: border-box;
 }
 
-.doodle {
+body {
   background-color: #FDF7F1;
+}
+
+.doodle {
   color: #3c3c3c;
   text-align: center;
   font-family: 'Short Stack', cursive;
