@@ -15,23 +15,23 @@ This app intends to spead awareness about food waste and incentivize users to ke
 ## Features
 Users can log expiration dates of foods at risk of spoilage. The app will have foods that the user can put in their digital pantry/refrigerator and note the quantity. 
 
+### Users can browse food and view a table to guide how long they should set the timer
 ![foodCardEx.](https://i.imgur.com/oIY4Kpu.png)
-###### Users can browse food and view a table to guide how long they should set the timer
 
 The app will count down the days until the food spoils based on the typical amount of time that food takes to spoil. 
 Users can edit this timer before they save it. Each food item has a table displaying how long food is good under different conditions (room-temp., refrigerated, frozen, etc.). Users can edit based on that table. 
 One thing the app makes clear is once the user looks at the table is that **Use By dates on food are not useful for determining if food is safe to eat.** They are merely created by the manufacturer to say when the food can be considered its "freshest." Food is often good well past its expiration date. The tables in the app will often have a "Good Past Printed Date" column if applicable.
 
+### The table and the exp. date entry field and days after exp. date column are to be used together
 ![imageOfTableAndForm](https://i.imgur.com/pV6bok9.png)
-###### The table and the exp. date entry field and days after exp. date column are to be used together
 
 If the timer is inaccurate, the food will come with signs of spoilage to look for. If a user if 
 unsure how to use a food that is about to spoil they will be able to click on a link 
 that will take them to a page full of recipes that include that ingredient. The user than then delete food 
 from their pantry if they have eaten it or if, perish the thought, it spoils... 😓
 
-![UserPantry](https://i.imgur.com/qviDdBD.png)
 ### Examples of how the food will appear in the user pantry
+![UserPantry](https://i.imgur.com/qviDdBD.png)
 
 A score will be kept and as a user eats food, the app will let them know how much money they have saved. 
 The price of their food items may vary as well so, if the user wishes, they can update 
