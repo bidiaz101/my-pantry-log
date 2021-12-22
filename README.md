@@ -43,4 +43,6 @@ If any users run restuarants or have access to large quantities of food that the
 
 My Pantry Log uses a React frontend and Ruby on Rails for the backend.
 
+Credit to [Chris McCormick](https://chr15m.github.io/DoodleCSS/) for letting anyone use his stylesheet and posting it online.
+
 For suggestions on how to improve the application contact me at bidiaz101@gmail.com
