@@ -224,4 +224,19 @@ span{
   .doodle .column-2{
     position: absolute;
   }
+
+  .doodle #header, #navbar {
+    float: none;
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 1000px){
+  .doodle #fig1, #fig2{
+    height: 400px;
+  }
+
+  .doodle #fig3{
+    height: 250px;
+  }
 }
