@@ -6,7 +6,9 @@ My Pantry is an app intended to help users remember to use food tehy buy to prev
 According to the Natural Resources Defense Council 40% of food in the U.S. is never eaten. This is about 20 pounds of wasted food per person per month. All this wasted food ends up in landfills where it decomposes in anaerobic conditions resulting in the production of methane, a greenhouse gas 86 times more potent than carbon dioxide.
 
 In addition to the wasted food resources are also wasted in producing food that will end up in landfills including the fuel to transport food, the water to grow produce, the feed to feed livestock, etc. 
+
 ![Infographic](/wasted-2017-infographic.jpg)
+###### credit to [NDRC](https://www.nrdc.org/)
 
 This app intends to spead awareness about food waste and incentivize users to keep track of food that they buy.
 
