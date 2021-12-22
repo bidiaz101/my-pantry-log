@@ -4,6 +4,10 @@ My Pantry is an app intended to help users remember to use food tehy buy to prev
 
 ## Background
 According to the Natural Resources Defense Council 40% of food in the U.S. is never eaten. This is about 20 pounds of wasted food per person per month. All this wasted food ends up in landfills where it decomposes in anaerobic conditions resulting in the production of methane, a greenhouse gas 86 times more potent than carbon dioxide.
+
+In addition to the wasted food resources are also wasted in producing food that will end up in landfills including the fuel to transport food, the water to grow produce, the feed to feed livestock, etc. 
+![Infographic](/wasted-2017-infographic.jpg)
+
 This app intends to spead awareness about food waste and incentivize users to keep track of food that they buy.
 
 <!-- Bill emerson good samaritan food donation act -->
@@ -13,7 +17,7 @@ Users can log expiration dates of foods at risk of spoilage. The app will have f
 
 The app will count down the days until the food spoils based on the typical amount of time that food takes to spoil. 
 Users can edit this timer before or after they save it. Each food item has a table displaying how long food is good under different conditions (room-temp., refrigerated, frozen, etc.). Users can edit based on that table. 
-One thing the app makes clear is once the user looks at the table is that **Use By dates on food are not useeful for determining if food is safe to eat.** They are merely created by the manufacturer to say when the food can be considered its "freshest." Food is often good well past its expiration date. The tables in the app will often have a "Good Past Printed Date" column if applicable.
+One thing the app makes clear is once the user looks at the table is that **Use By dates on food are not useful for determining if food is safe to eat.** They are merely created by the manufacturer to say when the food can be considered its "freshest." Food is often good well past its expiration date. The tables in the app will often have a "Good Past Printed Date" column if applicable.
 
 If the timer is inaccurate, the food will come with signs of spoilage to look for. If a user if 
 unsure how to use a food that is about to spoil they will be able to click on a link 
