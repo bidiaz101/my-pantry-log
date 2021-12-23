@@ -5,7 +5,7 @@ import { UserContext } from "../context/user"
 function MyPantry() {
     const [pantryItems, setPantryItems] = useState([])
 
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     const daysFloat = (new Date() - new Date(user.last_login)) / 86400000
     const daysInt = Math.floor(daysFloat)
@@ -21,6 +21,14 @@ function MyPantry() {
                 })
             })
         })
+
+        fetch(`/users/${user.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ last_login: new Date() })
+        })
+        .then(resp => resp.json())
+        .then(userData => setUser(userData))
     }
 
     useEffect(() => {

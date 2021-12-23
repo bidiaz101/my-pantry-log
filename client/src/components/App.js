@@ -14,11 +14,6 @@ function App() {
   const history = useHistory()
 
   function handleLogout(){
-    fetch(`/users/${user.id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ last_login: new Date() })
-    })
     fetch('/logout', { method: "DELETE" })
     .then(setUser({
       id: 0,
