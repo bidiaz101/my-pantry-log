@@ -12,7 +12,9 @@ function MyPantry() {
 
     if(daysInt > 0){
         pantryItems.map(item => {
-            const daysLeft = item.user_days_until_expiration - daysInt
+            let daysLeft = item.user_days_until_expiration - daysInt
+            if(daysLeft < 0) daysLeft = 0
+            
             fetch(`/user_foods/${item.id}`, {
                 method: "PATCH",
                 headers: { 'Content-Type': 'application/json' },
