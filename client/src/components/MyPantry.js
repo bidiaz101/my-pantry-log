@@ -7,7 +7,7 @@ function MyPantry() {
 
     const {user, setUser} = useContext(UserContext)
 
-    const daysFloat = (new Date() - new Date(user.last_login)) / 86400000
+    const daysFloat = (new Date() - new Date(user.last_login + 'T00:00:00')) / 86400000
     const daysInt = Math.floor(daysFloat)
 
     if(daysInt > 0){
