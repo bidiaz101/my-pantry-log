@@ -58,10 +58,10 @@ function App() {
         <Route path='/signup'>
           <Signup />
         </Route>
-        <Route path='/all-foods'>
+        <Route path='/foods'>
           <AllFoods />
         </Route>
-        <Route path='/my-pantry'>
+        <Route path='/user-foods'>
           <MyPantry />
         </Route>
         <Route>
