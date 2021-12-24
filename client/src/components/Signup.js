@@ -46,7 +46,7 @@ function Signup() {
                 .then(r => r.json())
                 .then(data => {
                     setUser(data)
-                    history.push('/all-foods')
+                    history.push('/foods')
                 })
             } else {
                 resp.json().then(resp => setErrors(resp.errors))

@@ -37,7 +37,7 @@ function Login() {
                 resp.json()
                 .then(data => {
                     setUser(data)
-                    history.push('/all-foods')
+                    history.push('/foods')
                 })
             } else {
                 resp.json().then(resp => setError(resp.error))
