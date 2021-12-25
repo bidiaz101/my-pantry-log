@@ -95,7 +95,7 @@ function EditingForm({foodData, setFoodData, added, setAdded}){
             <br />
 
             <input type='submit' value='Done!' />
-            {added? <p>Successfully added to <a href='/my-pantry'>My Pantry</a>!</p> : null}
+            {added? <p>Successfully added to <a href='/user-foods'>My Pantry</a>!</p> : null}
         </form>
     )
 }

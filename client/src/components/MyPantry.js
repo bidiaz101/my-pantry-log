@@ -14,6 +14,8 @@ function MyPantry() {
         pantryItems.map(item => {
             let daysLeft = item.user_days_until_expiration - daysInt
             if(daysLeft < 0) daysLeft = 0
+
+            console.log(daysLeft)
             
             fetch(`/user_foods/${item.id}`, {
                 method: "PATCH",
