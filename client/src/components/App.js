@@ -24,6 +24,14 @@ function App() {
 
   const saved = Math.round((user.money_saved + Number.EPSILON) * 100) / 100
 
+  const userInfo = (
+    <div id='user-container'>
+      <p>Hello {user.username}!</p>
+      <p>${saved} saved</p>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  )
+
   let signInButton 
   
   switch(useLocation().pathname){
@@ -48,14 +56,7 @@ function App() {
 
   return (
     <div className="doodle">
-      {user.username ? (
-        <div id='user-container'>
-          <p>Hello {user.username}!</p>
-          <p>${saved} saved</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : signInButton
-      }
+      {user.username ? userInfo : signInButton}
       <Link to="/">
         <Header />
       </Link>
