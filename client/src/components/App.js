@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Switch, Route, Link, useHistory } from 'react-router-dom'
+import { Switch, Route, Link, useHistory, useLocation } from 'react-router-dom'
 import About from './About'
 import Header from './Header'
 import Navbar from './Navbar'
@@ -19,10 +19,32 @@ function App() {
       id: 0,
       username: ''
     }))
-    history.push('/login')
+    history.push('/')
   }
 
   const saved = Math.round((user.money_saved + Number.EPSILON) * 100) / 100
+
+  let signInButton 
+  
+  switch(useLocation().pathname){
+    case '/login':
+      signInButton = <Link to="/signup"><button>Sign Up</button></Link>
+      break
+    case '/signup':
+      signInButton = <Link to="/login"><button>Login</button></Link>
+      break
+    default:
+      signInButton = (
+        <>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button>Sign Up</button>
+          </Link>
+        </>
+      )
+  }
 
   return (
     <div className="doodle">
@@ -32,16 +54,7 @@ function App() {
           <p>${saved} saved</p>
           <button onClick={handleLogout}>Logout</button>
         </div>
-      ) : (
-        <>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-        </>
-        )
+      ) : signInButton
       }
       <Link to="/">
         <Header />
