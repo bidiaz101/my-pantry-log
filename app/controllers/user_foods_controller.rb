@@ -4,8 +4,8 @@ class UserFoodsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 
     def index
-        user = User.find(session[:user_id])
-        render json: user.user_foods
+        user_foods = UserFood.where("user_id = ?", session[:user_id])
+        render json: user_foods
     end
 
     def create

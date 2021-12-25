@@ -8,7 +8,7 @@ According to the Natural Resources Defense Council 40% of food in the U.S. is ne
 In addition to the wasted food resources are also wasted in producing food that will end up in landfills including the fuel to transport food, the water to grow produce, the feed to feed livestock, etc. 
 
 ![Infographic](/wasted-2017-infographic.jpg)
-###### credit to [NDRC](https://www.nrdc.org/)
+###### credit to [NDRC](https://www.nrdc.org/){:target="_blank"}
 
 This app intends to spead awareness about food waste and incentivize users to keep track of food that they buy.
 
@@ -37,12 +37,12 @@ A score will be kept and as a user eats food, the app will let them know how muc
 The price of their food items may vary as well so, if the user wishes, they can update 
 the price of their items as well. This score is intended to motivated users to remember to use food they buy.
 
-My app will link over to [allrecipes.com](https://www.allrecipes.com/) with their food item as the search query, but the home page will link over to [savethefood.com](https://savethefood.com/) which has useful recipes for black bananas, overripe avocados, etc. 
+My app will link over to [allrecipes.com](https://www.allrecipes.com/){:target="_blank"} with their food item as the search query, but the home page will link over to [savethefood.com](https://savethefood.com/){:target="_blank"} which has useful recipes for black bananas, overripe avocados, etc. 
 
-If any users run restuarants or have access to large quantities of food that they cannot sell, the site will also have info on the [Bill Emerson Good Samaritan Food Donation Act](https://www.fns.usda.gov/tefap/information-bill-emerson-good-samaritan-food-act) which states a food donor cannot be held legally liable for the "nature, age, packaging, or condition of apparently wholesome food."
+If any users run restuarants or have access to large quantities of food that they cannot sell, the site will also have info on the [Bill Emerson Good Samaritan Food Donation Act](https://www.fns.usda.gov/tefap/information-bill-emerson-good-samaritan-food-act){:target="_blank"} which states a food donor cannot be held legally liable for the "nature, age, packaging, or condition of apparently wholesome food."
 
 My Pantry Log uses a React frontend and Ruby on Rails for the backend.
 
-Credit to [Chris McCormick](https://chr15m.github.io/DoodleCSS/) for letting anyone use his stylesheet and posting it online.
+Credit to [Chris McCormick](https://chr15m.github.io/DoodleCSS/){:target="_blank"} for letting anyone use his stylesheet and posting it online.
 
 For suggestions on how to improve the application contact me at bidiaz101@gmail.com

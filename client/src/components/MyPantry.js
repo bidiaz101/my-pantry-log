@@ -12,29 +12,31 @@ function MyPantry() {
     useEffect(() => {
         fetch('/user_foods')
         .then(resp => resp.json())
-        .then(data => setPantryItems(data))
-    }, [])
+        .then(items => {
+            setPantryItems(items)
 
-    if(daysInt > 0 && pantryItems.length > 0){
-        pantryItems.forEach(item => {
-            let daysLeft = item.user_days_until_expiration - daysInt
-            if(daysLeft < 0) daysLeft = 0
-            
-            fetch(`/user_foods/${item.id}`, {
-                method: "PATCH",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user_days_until_expiration: daysLeft })
-            })
+            if(daysInt > 0){
+                items.forEach(item => {
+                    let daysLeft = item.user_days_until_expiration - daysInt
+                    if(daysLeft < 0) daysLeft = 0
+                    
+                    fetch(`/user_foods/${item.id}`, {
+                        method: "PATCH",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_days_until_expiration: daysLeft })
+                    })
+                })
+        
+                fetch(`/users/${user.id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ last_login: new Date() })
+                })
+                .then(resp => resp.json())
+                .then(userData => setUser(userData))
+            }
         })
-
-        fetch(`/users/${user.id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ last_login: new Date() })
-        })
-        .then(resp => resp.json())
-        .then(userData => setUser(userData))
-    }
+    }, [daysInt, setUser, user.id])
 
     const itemsToDisplay = pantryItems.map(item => {
         const {name, category} = item.food
