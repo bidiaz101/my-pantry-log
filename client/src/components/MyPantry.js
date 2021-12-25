@@ -4,25 +4,26 @@ import { UserContext } from "../context/user"
 
 function MyPantry() {
     const [pantryItems, setPantryItems] = useState([])
-
     const {user, setUser} = useContext(UserContext)
 
-    const daysFloat = (new Date() - new Date(user.last_login + 'T00:00:00')) / 86400000
-    const daysInt = Math.floor(daysFloat)
+    // Used to calculate how many days(daysInt(Integer)) it has been since the user last logged in
+    const daysInt = Math.floor((new Date() - new Date(user.last_login + 'T00:00:00')) / 86400000)
 
-    if(daysInt > 0){
-        pantryItems.map(item => {
+    useEffect(() => {
+        fetch('/user_foods')
+        .then(resp => resp.json())
+        .then(data => setPantryItems(data))
+    }, [])
+
+    if(daysInt > 0 && pantryItems.length > 0){
+        pantryItems.forEach(item => {
             let daysLeft = item.user_days_until_expiration - daysInt
             if(daysLeft < 0) daysLeft = 0
-
-            console.log(daysLeft)
             
             fetch(`/user_foods/${item.id}`, {
                 method: "PATCH",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    user_days_until_expiration: daysLeft
-                })
+                body: JSON.stringify({ user_days_until_expiration: daysLeft })
             })
         })
 
@@ -34,12 +35,6 @@ function MyPantry() {
         .then(resp => resp.json())
         .then(userData => setUser(userData))
     }
-
-    useEffect(() => {
-        fetch('/user_foods')
-        .then(resp => resp.json())
-        .then(data => setPantryItems(data))
-    }, [])
 
     const itemsToDisplay = pantryItems.map(item => {
         const {name, category} = item.food
