@@ -18,7 +18,7 @@ class UserFoodsController < ApplicationController
     def update
         user_food = UserFood.find(params[:id])
         user_food.update!(user_food_params)
-        render json: user_food
+        render json: user_food, status: :accepted
     end
 
     def destroy
