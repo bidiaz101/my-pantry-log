@@ -35,15 +35,7 @@ function Signup() {
         })
         .then(resp => {
             if(resp.ok){
-                fetch('/login', {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        username: formData.username.toLowerCase(),
-                        password: formData.password
-                    })
-                })
-                .then(r => r.json())
+                resp.json()
                 .then(data => {
                     setUser(data)
                     history.push('/foods')
