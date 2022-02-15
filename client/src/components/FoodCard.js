@@ -84,7 +84,15 @@ function FoodCard({
         divId = 'bar-bad'
     }
     
-    const pantryContent = isEditing ? <PantryForm /> : (
+    const pantryContent = isEditing ? (
+        <PantryForm 
+            price={price} 
+            daysUntilExp={daysUntilExp} 
+            quantity={quantity} 
+            notes={notes} 
+            unit={unit} 
+        />
+    ) : (
         <>
             <p>Days Left: {daysUntilExp} days</p>
             <div id="counter-bar">
