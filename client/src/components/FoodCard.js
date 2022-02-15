@@ -1,5 +1,6 @@
 import React,{ useState, useContext } from 'react'
 import { UserContext } from '../context/user'
+import PantryForm from './PantryForm'
 
 function FoodCard({ 
     id, 
@@ -20,6 +21,7 @@ function FoodCard({
     notes
 }) {
     const [showDeets, setShowDeets] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
 
     const spoilageLis = spoilage.split(', ').map(item => {
         if(!item) return <li key="honey">Never spoils</li>
@@ -81,13 +83,9 @@ function FoodCard({
     } else {
         divId = 'bar-bad'
     }
-
-    return (
-        <div className='doodle-border'>
-            {inPantry ? <button onClick={() => handleRemove(id)} className='remove-btn'><strong>X</strong></button> : null}
-            <h1>{name}</h1>
-            {inPantry? (
-            <>
+    
+    const pantryContent = isEditing ? <PantryForm /> : (
+        <>
             <p>Days Left: {daysUntilExp} days</p>
             <div id="counter-bar">
                 <div id={divId} style={{width: (divWidth || ((daysUntilExp/14) * 100)) + '%'}} />
@@ -95,8 +93,14 @@ function FoodCard({
             <p>Quantity: {quantity} {unit}</p>
             <p>Notes: {notes || "None"}</p>
             {divId !== 'bar-good' ? <p>I need a <a href={`https://www.allrecipes.com/search/results/?search=${name}`} target='_blank' rel="noreferrer" >recipe</a>!</p> : null}
-            </>
-            ) : null}
+        </>
+    )
+
+    return (
+        <div className='doodle-border'>
+            {inPantry ? <button onClick={() => handleRemove(id)} className='remove-btn'><strong>X</strong></button> : null}
+            <h1>{name}</h1>
+            {inPantry ? pantryContent : null}
 
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
@@ -112,6 +116,7 @@ function FoodCard({
             {inPantry ? (
             <>
             <button onClick={() => handleEaten(id)} className='eaten-btn'>Eaten</button>
+            {isEditing ? null : <button onClick={() => setIsEditing(!isEditing)}>Edit</button>}
             <button onClick={() => handleRemove(id)} className='remove-btn'>Spoiled</button>
             </>
             ) : (
