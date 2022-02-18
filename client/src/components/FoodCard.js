@@ -92,6 +92,8 @@ function FoodCard({
             quantity={quantity} 
             notes={notes} 
             unit={unit} 
+            pantryItems={pantryItems}
+            setPantryItems={setPantryItems}
         />
     ) : (
         <>

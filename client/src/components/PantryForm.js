@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function PantryForm({ id, price, daysUntilExp, quantity, notes, unit }) {
+function PantryForm({ id, price, daysUntilExp, quantity, notes, unit, pantryItems, setPantryItems }) {
     const [formData, setFormData] = useState({
         price: price,
         daysUntilExp: daysUntilExp,
@@ -38,7 +38,7 @@ function PantryForm({ id, price, daysUntilExp, quantity, notes, unit }) {
             })
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => console.log(data, pantryItems))
     }
 
     return (
