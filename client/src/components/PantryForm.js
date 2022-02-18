@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function PantryForm({ price, daysUntilExp, quantity, notes, unit }) {
+function PantryForm({ id, price, daysUntilExp, quantity, notes, unit }) {
     const [formData, setFormData] = useState({
         price: price,
         daysUntilExp: daysUntilExp,
@@ -9,22 +9,36 @@ function PantryForm({ price, daysUntilExp, quantity, notes, unit }) {
     })
 
     function handleChange(e){
+        let value
+
+        if(e.target.name === 'daysUntilExp' || e.target.name === 'quantity'){
+            value = parseInt(e.target.value)
+        } else if (e.target.name === 'price') {
+            value = parseFloat(e.target.value)
+        } else {
+            value = e.target.value
+        }
+
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         })
     }
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(formData)
-        // fetch('/user_foods', {
-        //     method: 'POST',
-        //     headers: 'application/json',
-        //     body: JSON.stringify({
-
-        //     })
-        // })
+        fetch(`/user_foods/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_price: formData.price,
+                user_days_until_expiration: formData.daysUntilExp,
+                quantity: formData.quantity,
+                notes: formData.notes
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
     }
 
     return (

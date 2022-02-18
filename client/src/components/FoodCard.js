@@ -86,6 +86,7 @@ function FoodCard({
     
     const pantryContent = isEditing ? (
         <PantryForm 
+            id={id}
             price={price} 
             daysUntilExp={daysUntilExp} 
             quantity={quantity} 
@@ -111,6 +112,7 @@ function FoodCard({
             {inPantry ? pantryContent : null}
 
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
+            {inPantry? <hr /> : null}
             {showDeets? (
             <>
             <p>Category: {category}</p>
