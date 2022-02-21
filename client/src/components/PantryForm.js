@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
-function PantryForm({ id, price, daysUntilExp, quantity, notes, unit, pantryItems, setPantryItems }) {
+function PantryForm({ id, name, price, daysUntilExp, quantity, notes, unit, pantryItems, setPantryItems, setIsEditing }) {
     const [formData, setFormData] = useState({
         price: price,
         daysUntilExp: daysUntilExp,
         quantity: quantity,
-        notes: notes
+        notes: notes, 
+        unit: unit
     })
 
     function handleChange(e){
@@ -38,7 +39,12 @@ function PantryForm({ id, price, daysUntilExp, quantity, notes, unit, pantryItem
             })
         })
         .then(resp => resp.json())
-        .then(data => console.log(data, pantryItems))
+        .then(data => {
+            const itemIdx = pantryItems.findIndex(item => item.id === data.id)
+            const newItems = [...pantryItems.slice(0, itemIdx), data, ...pantryItems.slice(itemIdx + 1)]
+            setPantryItems(newItems)
+            setIsEditing(false)
+        })
     }
 
     return (
@@ -51,7 +57,16 @@ function PantryForm({ id, price, daysUntilExp, quantity, notes, unit, pantryItem
 
             <label htmlFor='quantity' >Quantity: </label>
             <input type='number' min='0' name='quantity' value={formData.quantity} onChange={handleChange} />
-            <p>{unit}</p>
+            <select name='unit' value={formData.unit} onChange={handleChange}>
+                <option value={name.slice(-1) === 's' ? name : name + 's'}>
+                    {name.slice(-1) === 's' ? name : name + 's'}
+                </option>
+                <option value='lbs'>lbs</option>
+                <option value='kgs'>kgs</option>
+                <option value="L">L</option>
+                <option value='containers'>containers</option>
+                <option value='gallons'>gallons</option>
+            </select>
 
             <label htmlFor='notes' >Notes: </label>
             <br />

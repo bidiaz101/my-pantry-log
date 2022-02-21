@@ -87,6 +87,7 @@ function FoodCard({
     const pantryContent = isEditing ? (
         <PantryForm 
             id={id}
+            name={name}
             price={price} 
             daysUntilExp={daysUntilExp} 
             quantity={quantity} 
@@ -94,6 +95,7 @@ function FoodCard({
             unit={unit} 
             pantryItems={pantryItems}
             setPantryItems={setPantryItems}
+            setIsEditing={setIsEditing}
         />
     ) : (
         <>
@@ -122,6 +124,7 @@ function FoodCard({
             <div dangerouslySetInnerHTML={{__html: table}} />
             <h3>Signs of Spoilage</h3>
             <ul>{spoilageLis}</ul>
+            <hr />
             </>
             ) : null}
             <br />
