@@ -35,7 +35,8 @@ function PantryForm({ id, name, price, daysUntilExp, quantity, notes, unit, pant
                 user_price: formData.price,
                 user_days_until_expiration: formData.daysUntilExp,
                 quantity: formData.quantity,
-                notes: formData.notes
+                notes: formData.notes,
+                unit: formData.unit
             })
         })
         .then(resp => resp.json())
