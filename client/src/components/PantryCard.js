@@ -97,7 +97,7 @@ function PantryCard({
             {showDeets? (
                 <>
                 <p>Category: {category}</p>
-                <p>Price Estimate: ${price}</p>
+                <p>Price: ${price}</p>
                 <div dangerouslySetInnerHTML={{__html: table}} />
                 <h3>Signs of Spoilage</h3>
                 <ul>{spoilageLis}</ul>
@@ -113,34 +113,3 @@ function PantryCard({
 }
 
 export default PantryCard
-
-// Pantry props
-// 
-// id={item.id}
-// name={name} 
-// category={category} 
-// price={item.user_price} 
-// table={item.food.description} 
-// spoilage={item.food.signs_of_spoilage} 
-// inPantry={true} 
-// key={item.id}
-// pantryItems={pantryItems}
-// setPantryItems={setPantryItems}
-// quantity={item.quantity}
-// unit={item.unit}
-// notes={item.notes}
-// daysUntilExp={item.user_days_until_expiration}
-
-// All Food props
-// 
-// id={food.id}
-// name={food.name} 
-// daysUntilExp={food.days_until_expiration} 
-// category={food.category}
-// table={food.description}
-// price={food.price}
-// spoilage={food.signs_of_spoilage}
-// setShowForm={setShowForm}
-// setFoodData={setFoodData}
-// key={food.id}
-// setAdded={setAdded}
