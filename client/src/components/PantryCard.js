@@ -97,7 +97,7 @@ function PantryCard({
             {showDeets? (
                 <>
                 <p>Category: {category}</p>
-                <p>Price{inPantry ? null : " Estimate"}: ${price}</p>
+                <p>Price Estimate: ${price}</p>
                 <div dangerouslySetInnerHTML={{__html: table}} />
                 <h3>Signs of Spoilage</h3>
                 <ul>{spoilageLis}</ul>

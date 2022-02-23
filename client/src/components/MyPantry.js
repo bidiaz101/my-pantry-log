@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import FoodCard from "./FoodCard";
+import PantryCard from "./PantryCard";
 import { UserContext } from "../context/user"
 
 function MyPantry() {
@@ -42,14 +42,13 @@ function MyPantry() {
         const {name, category} = item.food
 
         return (
-            <FoodCard 
+            <PantryCard 
                 id={item.id}
                 name={name} 
                 category={category} 
                 price={item.user_price} 
                 table={item.food.description} 
-                spoilage={item.food.signs_of_spoilage} 
-                inPantry={true} 
+                spoilage={item.food.signs_of_spoilage}
                 key={item.id}
                 pantryItems={pantryItems}
                 setPantryItems={setPantryItems}
