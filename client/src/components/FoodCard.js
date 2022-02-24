@@ -8,8 +8,7 @@ function FoodCard({
     daysUntilExp, 
     table, 
     price, 
-    spoilage, 
-    setShowForm, 
+    spoilage,
     setFoodData,
     setAdded
 }) {
@@ -25,7 +24,6 @@ function FoodCard({
 
     function handleAdd(){
         setAdded(false)
-        setShowForm(true)
         setShowDeets(true)
         setFoodData({
             id: id,

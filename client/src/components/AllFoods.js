@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import FoodCard from './FoodCard'
-import EditingForm from './EditingForm'
 
 function AllFoods() {
     const [foods, setFoods] = useState([])
     const [filter, setFilter] = useState('')
     const [search, setSearch] = useState('')
-    const [showForm, setShowForm] = useState(false)
     const [foodData, setFoodData] = useState({
         id: 0,
         name: '',
@@ -40,7 +38,6 @@ function AllFoods() {
                 table={food.description}
                 price={food.price}
                 spoilage={food.signs_of_spoilage}
-                setShowForm={setShowForm}
                 setFoodData={setFoodData}
                 key={food.id}
                 setAdded={setAdded}
@@ -50,7 +47,7 @@ function AllFoods() {
 
     return (
         <div>
-            <div className={showForm ? 'column-1' : null} >
+            <div>
                 <div className='food-controls'>
                     <label>Search: </label>
                     <input type='text' onChange={e => setSearch(e.target.value.toLowerCase())}/>
@@ -68,15 +65,10 @@ function AllFoods() {
                     </select>
                 </div>
                 <hr />
-                <div className={showForm? 'grid-container-form' : 'grid-container-formless'}>
+                <div className='grid-container'>
                     {foodsToDisplay}
                 </div>
             </div>
-            {showForm ? (
-                <div className={showForm ? 'column-2' : null} >
-                    <EditingForm foodData={foodData} setFoodData={setFoodData} added={added} setAdded={setAdded} />
-                </div>
-            ) : null}
         </div>
     )
 }
