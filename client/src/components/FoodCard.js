@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import EditingForm from './EditingForm'
 
 function FoodCard({ 
     id, 
@@ -13,6 +14,7 @@ function FoodCard({
     setAdded
 }) {
     const [showDeets, setShowDeets] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
 
     const spoilageLis = spoilage.split(', ').map(item => {
         if(!item) return <li key="honey">Never spoils</li>
@@ -42,6 +44,13 @@ function FoodCard({
         <div className='doodle-border'>
             <h1>{name}</h1>
 
+            {isEditing? (
+                <>
+                <EditingForm setFoodData={setFoodData} setAdded={setAdded} />
+                <hr/>
+                </>
+            ) : null}
+
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
             <>
@@ -53,8 +62,7 @@ function FoodCard({
             <hr />
             </>
             ) : null}
-            <br />
-            <button onClick={handleAdd}>Add to My Pantry</button>
+            {isEditing? null : <button onClick={() => setIsEditing(true)}>Add to My Pantry</button>}
         </div>
     )
 }

@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
 
-function EditingForm({foodData, setFoodData, added, setAdded}){
+function EditingForm({ added, setAdded }){
     const [dateExists, setDateExists] = useState(false)
+    const [foodData, setFoodData] = useState({
+        id: 0,
+        name: '',
+        category: '',
+        price: 0,
+        daysUntilExp: 0,
+        quantity: 0,
+        units: '',
+        notes: '',
+        expDate: ''
+    })
 
     function handleDate(){
         setDateExists(!dateExists)
