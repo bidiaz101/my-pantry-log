@@ -5,18 +5,6 @@ function AllFoods() {
     const [foods, setFoods] = useState([])
     const [filter, setFilter] = useState('')
     const [search, setSearch] = useState('')
-    const [foodData, setFoodData] = useState({
-        id: 0,
-        name: '',
-        category: '',
-        price: 0,
-        daysUntilExp: 0,
-        quantity: 0,
-        units: '',
-        notes: '',
-        expDate: ''
-    })
-    const [added, setAdded] = useState(false)
 
     useEffect(() => {
         fetch('/foods')
@@ -38,9 +26,7 @@ function AllFoods() {
                 table={food.description}
                 price={food.price}
                 spoilage={food.signs_of_spoilage}
-                setFoodData={setFoodData}
                 key={food.id}
-                setAdded={setAdded}
             />
         )
     })

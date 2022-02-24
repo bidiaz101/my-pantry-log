@@ -61,7 +61,7 @@ function MyPantry() {
     })
 
     return (
-        <div className="grid-container-formless">
+        <div className="grid-container">
             {itemsToDisplay}
         </div>
     )

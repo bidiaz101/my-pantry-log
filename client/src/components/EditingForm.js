@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 
-function EditingForm({ added, setAdded }){
+function EditingForm({ id, name, category, price, daysUntilExp }){
     const [dateExists, setDateExists] = useState(false)
+    const pluralName = name.slice(-1) === 's' ? name : name + 's'
     const [foodData, setFoodData] = useState({
-        id: 0,
-        name: '',
-        category: '',
-        price: 0,
-        daysUntilExp: 0,
-        quantity: 0,
-        units: '',
+        id: id,
+        name: name,
+        category: category,
+        price: price,
+        daysUntilExp: daysUntilExp,
+        quantity: 1,
+        unit: pluralName,
         notes: '',
         expDate: ''
     })
@@ -63,13 +64,12 @@ function EditingForm({ added, setAdded }){
                 notes: notes
             })
         })
-        .then(setAdded(true))
+        .then(resp => resp.json())
+        .then(data => console.log(data))
     }
     
     return (
-        <form onSubmit={e => handleSubmit(e)}>
-            <h1>{foodData.name}</h1>
-
+        <form onSubmit={handleSubmit}>
             <p>Category: {foodData.category}</p>
             <br />
             
@@ -106,7 +106,7 @@ function EditingForm({ added, setAdded }){
             <br />
 
             <input type='submit' value='Done!' />
-            {added? <p>Successfully added to <a href='/user-foods'>My Pantry</a>!</p> : null}
+            {false ? <p>Successfully added to <a href='/user-foods'>My Pantry</a>!</p> : null}
         </form>
     )
 }

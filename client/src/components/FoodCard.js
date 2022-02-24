@@ -8,9 +8,7 @@ function FoodCard({
     daysUntilExp, 
     table, 
     price, 
-    spoilage,
-    setFoodData,
-    setAdded
+    spoilage
 }) {
     const [showDeets, setShowDeets] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
@@ -22,32 +20,24 @@ function FoodCard({
         return <li key={item}>{newItem}</li>
     })
 
-    function handleAdd(){
-        setAdded(false)
-        setShowDeets(true)
-        setFoodData({
-            id: id,
-            name: name,
-            category: category,
-            price: price,
-            daysUntilExp: daysUntilExp,
-            quantity: 1,
-            unit: name.slice(-1) === 's' ? name : name + 's',
-            notes: '',
-            expDate: ''
-        })
-    }
-
     return (
         <div className='doodle-border'>
             <h1>{name}</h1>
 
             {isEditing? (
                 <>
-                <EditingForm setFoodData={setFoodData} setAdded={setAdded} />
+                <EditingForm 
+                    id={id} 
+                    name={name} 
+                    category={category} 
+                    price={price} 
+                    daysUntilExp={daysUntilExp}
+                />
                 <hr/>
                 </>
             ) : null}
+
+            {isEditing? null : <button onClick={() => setIsEditing(true)}>Add to My Pantry</button>}
 
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
@@ -60,7 +50,6 @@ function FoodCard({
             <hr />
             </>
             ) : null}
-            {isEditing? null : <button onClick={() => setIsEditing(true)}>Add to My Pantry</button>}
         </div>
     )
 }
