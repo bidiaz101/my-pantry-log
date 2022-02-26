@@ -201,7 +201,7 @@ span{
 }
 
 @media screen and (max-width: 800px) {
-  .grid-container-form, .grid-container-formless{
+  .grid-container{
     display: grid;
     grid-template-columns: 100%;
   }
