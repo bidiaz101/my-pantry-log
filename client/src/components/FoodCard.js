@@ -12,6 +12,7 @@ function FoodCard({
 }) {
     const [showDeets, setShowDeets] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
+    const [hidden, setHidden] = useState(true)
 
     const spoilageLis = spoilage.split(', ').map(item => {
         if(!item) return <li key="honey">Never spoils</li>
@@ -32,12 +33,12 @@ function FoodCard({
                     category={category} 
                     price={price} 
                     daysUntilExp={daysUntilExp}
+                    setIsEditing={setIsEditing}
+                    setHidden={setHidden}
                 />
                 <hr/>
                 </>
-            ) : null}
-
-            {isEditing? null : <button onClick={() => setIsEditing(true)}>Add to My Pantry</button>}
+            ) : <button onClick={() => setIsEditing(true)}>Add to My Pantry</button>}
 
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
@@ -50,6 +51,8 @@ function FoodCard({
             <hr />
             </>
             ) : null}
+
+            {!hidden ? <p>Successfully added to <a href='/user-foods'>My Pantry</a>!</p> : null}
         </div>
     )
 }

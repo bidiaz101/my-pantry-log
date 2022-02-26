@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function EditingForm({ id, name, category, price, daysUntilExp }){
+function EditingForm({ id, name, category, price, daysUntilExp, setIsEditing, setHidden }){
     const [dateExists, setDateExists] = useState(false)
     const pluralName = name.slice(-1) === 's' ? name : name + 's'
     const [foodData, setFoodData] = useState({
@@ -64,8 +64,11 @@ function EditingForm({ id, name, category, price, daysUntilExp }){
                 notes: notes
             })
         })
-        .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(() => {
+            setIsEditing(false)
+            setHidden(false)
+            setTimeout(() => setHidden(true), 2000)
+        })
     }
     
     return (
@@ -74,21 +77,21 @@ function EditingForm({ id, name, category, price, daysUntilExp }){
             <br />
             
             <label>Your Price: </label>
-            <input type="number" step="0.01" min='0' name='price' value={foodData.price} onChange={e => handleChange(e)} />
+            <input type="number" step="0.01" min='0' name='price' value={foodData.price} onChange={handleChange} />
             <br />
 
-            {dateExists ? <input type='date' name='expDate' onChange={e => handleChange(e)} /> : null}
+            {dateExists ? <input type='date' name='expDate' onChange={handleChange} /> : null}
             <button type='button' onClick={handleDate}>{dateExists ? "No exp. date" : "Enter exp. date"}</button>
             <br />
 
             <label>{dateExists ? "Past Printed Date" : "Shelf Life"} (in Days): </label>
-            <input type='number' min='0' name='daysUntilExp' value={foodData.daysUntilExp} onChange={e => handleChange(e)} />
+            <input type='number' min='0' name='daysUntilExp' value={foodData.daysUntilExp} onChange={handleChange} />
             <br />
 
             <label>Quantity: </label>
-            <input type='number' min='0' name='quantity' value={foodData.quantity} onChange={e => handleChange(e)} />
+            <input type='number' min='0' name='quantity' value={foodData.quantity} onChange={handleChange} />
 
-            <select name='unit' onChange={e => handleChange(e)}>
+            <select name='unit' onChange={handleChange}>
                 <option value={foodData.name.slice(-1) === 's' ? foodData.name : foodData.name + 's'}>
                     {foodData.name.slice(-1) === 's' ? foodData.name : foodData.name + 's'}
                 </option>
@@ -106,7 +109,6 @@ function EditingForm({ id, name, category, price, daysUntilExp }){
             <br />
 
             <input type='submit' value='Done!' />
-            {false ? <p>Successfully added to <a href='/user-foods'>My Pantry</a>!</p> : null}
         </form>
     )
 }
