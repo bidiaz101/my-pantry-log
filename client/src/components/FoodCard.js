@@ -21,12 +21,17 @@ function FoodCard({
         return <li key={item}>{newItem}</li>
     })
 
+    function handleEditing(){
+        setIsEditing(!isEditing)
+    }
+
     return (
         <div className='doodle-border'>
             <h1>{name}</h1>
 
             {isEditing? (
                 <>
+                <button className='remove-btn' onClick={handleEditing}><strong>X</strong></button>
                 <EditingForm 
                     id={id} 
                     name={name} 
@@ -38,7 +43,7 @@ function FoodCard({
                 />
                 <hr/>
                 </>
-            ) : <button onClick={() => setIsEditing(true)}>Add to My Pantry</button>}
+            ) : <button onClick={handleEditing}>Add to My Pantry</button>}
 
             <button onClick={() => setShowDeets(!showDeets)}>{showDeets ? "Hide Details" : "Show Details"}</button>
             {showDeets? (
