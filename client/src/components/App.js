@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Switch, Route, Link, useHistory, useLocation } from 'react-router-dom'
 import About from './About'
 import Header from './Header'
@@ -10,7 +10,41 @@ import MyPantry from './MyPantry';
 import { UserContext } from '../context/user'
 
 function App() {
-  const {user, setUser} = useContext(UserContext)
+  const [pantryItems, setPantryItems] = useState([])
+  const { user, setUser } = useContext(UserContext)
+
+  // Used to calculate how many days(daysInt(Integer)) it has been since the user last logged in
+  const daysInt = Math.floor((new Date() - new Date(user.last_login + 'T00:00:00')) / 86400000)
+
+  useEffect(() => {
+      fetch('/user_foods')
+      .then(resp => resp.json())
+      .then(items => {
+          setPantryItems(items)
+
+          if(daysInt > 0){
+              items.forEach(item => {
+                  let daysLeft = item.user_days_until_expiration - daysInt
+                  if(daysLeft < 0) daysLeft = 0
+                  
+                  fetch(`/user_foods/${item.id}`, {
+                      method: "PATCH",
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ user_days_until_expiration: daysLeft })
+                  })
+              })
+      
+              fetch(`/users/${user.id}`, {
+                  method: 'PATCH',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ last_login: new Date() })
+              })
+              .then(resp => resp.json())
+              .then(userData => setUser(userData))
+          }
+      })
+  }, [daysInt, setUser, user.id])
+
   const history = useHistory()
 
   function handleLogout(){
@@ -76,7 +110,7 @@ function App() {
           <AllFoods />
         </Route>
         <Route path='/user-foods'>
-          <MyPantry />
+          <MyPantry pantryItems={pantryItems} setPantryItems={setPantryItems} />
         </Route>
         <Route>
           <h1>404 Page Not Found</h1>
