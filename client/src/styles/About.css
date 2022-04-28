@@ -3,20 +3,48 @@
     margin-right :30px;
 }
 
+.about #unsplash-photo{
+    height: 300px;
+}
+
 .about .intro{
-    margin-bottom: 80px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 30% 70%;
 }
 
 .about .section-one{
     display: grid;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 100%;
     grid-template-columns: 30% 20% 50%;
 }
 
-.about .section-two{
+.about .section-one-a{
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: 30% 70%;
+}
+
+.about .text-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about .section-two{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about .section-two .section-two-a{
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .about .section-three{
