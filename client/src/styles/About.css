@@ -1,0 +1,29 @@
+.about{
+    margin-left: 30px;
+    margin-right :30px;
+}
+
+.about .intro{
+    margin-bottom: 80px;
+}
+
+.about .section-one{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 30% 20% 50%;
+}
+
+.about .section-two{
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 30% 70%;
+}
+
+.about .section-three{
+    display: flex;
+    justify-content: center;
+}
+
+.about .footer{
+    margin-bottom: 80px;
+}
