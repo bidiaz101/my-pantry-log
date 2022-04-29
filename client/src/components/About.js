@@ -94,12 +94,13 @@ function About() {
                 <div className='section-three'>
                     <div>
                         <figure>
-
+                            <img src={require('../images/STF_homepage.png').default} alt="Save the food homepage" id='fig3' />
+                            <figcaption><a href='https://savethefood.com/' target='_blank' rel="noreferrer">Save the food</a> homepage</figcaption>
                         </figure>
                         <div>
                             <h3>My food is about to spoil! Help!</h3>
                             <p>
-                                Once the food is within a few days of going bad, the app will link you over to a search of recipes to try that use that food. <a href='https://savethefood.com/' target='_blank' rel="noreferrer">Save the food</a> is a website that also has recipes that use food that is close to spoiling including near sour milk, overripe avocados, black bananas, etc.
+                                Once the food is within a few days of going bad, the app will link you over to a search of recipes to try that use that food. <strong>Save the Food</strong> is a website that also has recipes that use food that is close to spoiling including near sour milk, overripe avocados, black bananas, etc.
                             </p>
                         </div>
                     </div>
@@ -111,7 +112,8 @@ function About() {
                             </p>
                         </div>
                         <figure>
-
+                            <img src={require('../images/BillEmerson.jpg').default} alt='Bill Emerson' />
+                            <figcaption>The Man Himself</figcaption>
                         </figure>
                     </div>
                 </div>
