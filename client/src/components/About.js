@@ -90,15 +90,29 @@ function About() {
                         </p>
                     </div>
                 </div>
-
+{/* By <a rel="nofollow" class="external free" href="http://bioguide.congress.gov/scripts/biodisplay.pl?index=E000174">http://bioguide.congress.gov/scripts/biodisplay.pl?index=E000174</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=16913733">Link</a> */}
                 <div className='section-three'>
                     <div>
-                        <p>
-                            Once the food is within a few days of going bad, the app will link you over to a search of recipes to try that use that food. <a href='https://savethefood.com/' target='_blank' rel="noreferrer">Save the food</a> is a website that also has recipes that use food that is close to spoiling including near sour milk, overripe avocados, black bananas, etc.
-                        </p>
-                        <p>
-                            <strong>If you own a restuarant or have access to large quantities of food</strong> legal action cannot be brought against you for the "nature, age, packaging, or condition of apparently wholesome food" according to the <a href='https://www.fns.usda.gov/tefap/information-bill-emerson-good-samaritan-food-act' target="_blank" rel="noreferrer">Bill Emerson Good Samaritan Food Donation Act</a>.
-                        </p>
+                        <figure>
+
+                        </figure>
+                        <div>
+                            <h3>My food is about to spoil! Help!</h3>
+                            <p>
+                                Once the food is within a few days of going bad, the app will link you over to a search of recipes to try that use that food. <a href='https://savethefood.com/' target='_blank' rel="noreferrer">Save the food</a> is a website that also has recipes that use food that is close to spoiling including near sour milk, overripe avocados, black bananas, etc.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h3>I have food I'm sure is good, but I'm worried for being held liable if it isn't.</h3>
+                            <p>
+                                Legal action cannot be brought against you for the "nature, age, packaging, or condition of apparently wholesome food" according to the <a href='https://www.fns.usda.gov/tefap/information-bill-emerson-good-samaritan-food-act' target="_blank" rel="noreferrer">Bill Emerson Good Samaritan Food Donation Act</a>.
+                            </p>
+                        </div>
+                        <figure>
+
+                        </figure>
                     </div>
                 </div>
             </section>
