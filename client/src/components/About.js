@@ -10,6 +10,7 @@ function About() {
 
     return (
         <div className='about'>
+            <h2>What's this site for?</h2>
             <section className='intro'>
                 <figure>
                     <img src={require("../images/rotting_apples.jpg").default} alt="Rotting apples" id='unsplash-photo' />
@@ -17,7 +18,6 @@ function About() {
                 </figure>
 
                 <div>
-                    <h2>What's this site for?</h2>
                     <p>
                         According to the Natural Resources Defense Council 40% of food in the U.S. is never eaten. This is about 20 pounds of wasted food per person per month. All this wasted food ends up in landfills where it decomposes in anaerobic conditions resulting in the production of methane, a greenhouse gas 86 times more potent than carbon dioxide.
                     </p>
@@ -90,7 +90,6 @@ function About() {
                         </p>
                     </div>
                 </div>
-{/* By <a rel="nofollow" class="external free" href="http://bioguide.congress.gov/scripts/biodisplay.pl?index=E000174">http://bioguide.congress.gov/scripts/biodisplay.pl?index=E000174</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=16913733">Link</a> */}
                 <div className='section-three'>
                     <div>
                         <figure>
